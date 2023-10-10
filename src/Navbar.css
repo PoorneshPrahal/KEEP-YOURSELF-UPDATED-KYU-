@@ -1,0 +1,27 @@
+.colorset {
+  color: black;
+}
+
+.navbar {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.margin .item {
+  display: inline-block;
+}
+
+.logospace {
+  width: 50%;
+  display: flex;
+}
+
+.logospace img {
+  height: 3em;
+  padding-left: 1em;
+}
+
+.margin {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
