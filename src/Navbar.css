@@ -3,7 +3,8 @@
 }
 
 .navbar {
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: #FFF;
+box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.20);
 }
 
 .margin .item {
@@ -24,4 +25,21 @@
   width: 50%;
   display: flex;
   justify-content: space-around;
+}
+
+
+.hp1{
+  background: linear-gradient(#1D2671 0 0) 
+  bottom left/
+  var(--underline-width, 0%) 0.1em
+  no-repeat;
+
+display: inline-block;
+padding: 0 .5em 0.2em;
+text-decoration: none;
+transition: background-size 0.5s;
+}
+
+.hp1:hover {
+  --underline-width: 100%;
 }
