@@ -11,22 +11,22 @@ function Navbar() {
         </div>
         <div className="margin">
           <Nav.Item className="item">
-            <Nav.Link href="/home" className="colorset">
+            <Nav.Link href="/home" className="colorset hp1">
               Home
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="item">
-            <Nav.Link eventKey="link-1" className="colorset">
+            <Nav.Link eventKey="link-1" className="colorset hp1">
               Dashboard
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="item">
-            <Nav.Link eventKey="link-2" className="colorset">
+            <Nav.Link eventKey="link-2" className="colorset hp1">
               Pricing
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="item">
-            <Nav.Link eventKey="link-2" className="colorset">
+            <Nav.Link eventKey="link-2" className="colorset hp1">
               Login
             </Nav.Link>
           </Nav.Item>
