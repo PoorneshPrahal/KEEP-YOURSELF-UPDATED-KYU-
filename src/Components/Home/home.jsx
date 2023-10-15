@@ -18,11 +18,13 @@ import viewImg from "../../images/viewsImg.png";
 import bookmarkImg from "../../images/bookmarkImg.png";
 import chooseUsImg from "../../images/chooseUsImg.png";
 import KYUImg from "../../images/KYUImg.png";
+import Navbar from "../Navbar/Navbar";
 
 
 export default function Home() {
   return (
     <div>
+      <Navbar/>
       <img src={circleGrp3} className="grp3" alt="" />
       <div className="container div1">
         <div className="row">

@@ -4,15 +4,33 @@ import News from "./Components/News/news";
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 
-import Navbar from "./Navbar.js";
-import Sidebar from "./Components/Sidebar";
-import { BrowserRouter } from "react-router-dom";
+import Navbar from "./Components/Navbar/Navbar.js";
+import Sidebar from "./Components/Sidebar/Sidebar";
+
+import Main from "./Components/Main/Main";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Home/>
+      
+      <BrowserRouter>
+      
+      <Routes>
+
+      <Route path="/" element={<Home/>}/>
+
+      <Route path="/main" element={<Main/>}/>
+
+      <Route path="/news" element={<News/>}/>
+
+
+
+      </Routes>
+      
+      
+      </BrowserRouter>
+
+
     </div>
   );
 }

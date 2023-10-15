@@ -7,8 +7,8 @@ import {
   CDBSidebarMenuItem,
 } from "cdbreact";
 import { NavLink } from "react-router-dom";
-import logo from "../logo.jpg";
-import hamburger from "../hamburger.png";
+import logo from "../../images/logo.jpg";
+import hamburger from "../../images/hamburger.png";
 import "./Sidebar.css";
 
 const Sidebar = () => {
