@@ -1,0 +1,28 @@
+.cont-log{
+    margin-left: 37%;
+    margin-top: 10%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+}
+
+.inpt-user{
+    width: 300px;
+}
+
+.inpt-pwd{
+    width: 300px;
+}
+.btn-log{
+    width: 100px;
+    margin-top:20px;
+    margin-left: 90px;
+}
+
+.h1-or{
+    margin-top:20px;
+    margin-left: 120px;
+
+}
