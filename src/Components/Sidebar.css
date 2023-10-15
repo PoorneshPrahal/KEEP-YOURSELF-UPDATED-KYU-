@@ -1,0 +1,9 @@
+.ivErMX {
+  width: 20%;
+  min-width: 20%;
+}
+
+.ivErMX.toggled {
+  width: 8%;
+  min-width: 8%;
+}
