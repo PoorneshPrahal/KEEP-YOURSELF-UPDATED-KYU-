@@ -5,15 +5,14 @@ import News from "./Components/News/news";
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 
 import Navbar from "./Navbar.js";
+import Sidebar from "./Components/Sidebar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
-      <News/>
-
-      
-
+      <Home/>
     </div>
   );
 }
