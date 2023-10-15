@@ -22,7 +22,7 @@ function News() {
   const lazyLoad = async () => {
     axios
     .get(
-      `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=technology&language=en&page=${nextPage}`
+      ``
     )
     .then((res) => {
       const newArticles = res.data.results;
