@@ -8,7 +8,7 @@ import Navbar from "./Components/Navbar/Navbar.js";
 import Sidebar from "./Components/Sidebar/Sidebar";
 
 import Main from "./Components/Main/Main";
-
+import { SkeletonTheme } from "react-loading-skeleton";
 function App() {
   return (
     <div className="App">
