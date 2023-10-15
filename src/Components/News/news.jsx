@@ -1,148 +1,102 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import "./news.css";
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
-import news1 from "../../images/news1.png";
-import news2 from "../../images/news2.png";
-import news3 from "../../images/news3.png";
-import shareImg from "../../images/shareImg.png";
-import downloadImg from "../../images/downloadImg.png";
-import chatImg from "../../images/chatImg.png";
-import viewImg from "../../images/viewsImg.png";
-import bookmarkImg from "../../images/bookmarkImg.png";
 
+
+import axios from 'axios';
+import NewsCard from './newsCard';
+import CardSkeleton from './CardSkeleton';
 
 function News() {
+
+  const [articles, setArticles] = useState([]);
+  const [nextPage, setNextPage] = useState(null);
+  const [isLoading,SetIsLoading] = useState(true);
+
+  useEffect(()=>{
+      fetchInitial();
+  },[])
+
+
+  const lazyLoad = async () => {
+    axios
+    .get(
+      `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=technology&language=en&page=${nextPage}`
+    )
+    .then((res) => {
+      const newArticles = res.data.results;
+      
+      setArticles(prevArticles => [...prevArticles, ...newArticles]);
+      setNextPage(res.data.nextPage);
+      SetIsLoading(false)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  };
+
+
+
+  const fetchInitial = async () => {
+    axios
+      .get(
+        `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&category=technology&language=en`
+      )
+      .then((res) => {
+        console.log(res.data.results)
+        setArticles(res.data.results);
+        setNextPage(res.data.nextPage)
+        console.log(res.data.nextPage)
+        SetIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  };
+
+  window.onscroll = () => {
+    console.log("Scrolled")
+    // console.log("Window Height:", window.innerHeight);
+    // console.log("Scroll Top:", document.documentElement.scrollTop);
+    // console.log("Document Height:", document.documentElement.offsetHeight);
+    // console.log(window.innerHeight + document.documentElement.scrollTop)
+    if (
+      window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight
+    ) {
+      SetIsLoading(true)
+      
+      lazyLoad();
+    }
+  };
+
+
+
   return (
     <div>
       
-      <Sidebar/>
-      <div className="container div3" style={{display : "inline-block",width:"50%"}}>
+     
+      <div >
+
+      <div className="container ">
         <p className="heading">Featured News</p>
+        
         <div className="row">
-          <div className="col">
-            <div style={{ marginTop: "3%" }}>
-              <div class="card card-2">
-                <img
-                  class="card-img-top card2-img"
-                  src={news1}
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <div className="row">
-                    <div className="col-10">
-                      <h5 class="card-title card2-title">
-                        Travelers pay more than 2k, Trudeau says
-                      </h5>
-                    </div>
-                    <div className="col-2">
-                      <img src={bookmarkImg} alt="" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-2">
-                      <img src={shareImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={downloadImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
 
-                    <div className="col-2">
-                      <img src={viewImg} alt="" />
-                    </div>
-                    <div className="col-4 views">799 views</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          {articles.map((article,index)=>{
+            return <NewsCard article = {article} key={article.id}/>
+          })}
 
-          <div className="col">
-            <div style={{ marginTop: "3%" }}>
-              <div class="card card-2">
-                <img
-                  class="card-img-top card2-img"
-                  src={news2}
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <div className="row">
-                    <div className="col-10">
-                      <h5 class="card-title card2-title">
-                        RBI extends last date of depositing Rs 2,000 notes to
-                        October 7
-                      </h5>
-                    </div>
-                    <div className="col-2">
-                      <img src={bookmarkImg} alt="" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-2">
-                      <img src={shareImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={downloadImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
+          {isLoading && <CardSkeleton cards={6}/>}
+          
 
-                    <div className="col-2">
-                      <img src={viewImg} alt="" />
-                    </div>
-                    <div className="col-4 views">799 views</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="col">
-            <div style={{ marginTop: "3%" }}>
-              <div class="card card-2">
-                <img
-                  class="card-img-top card2-img"
-                  src={news3}
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <div className="row">
-                    <div className="col-10">
-                      <h5 class="card-title card2-title">
-                        Political news on president Joe Biden
-                      </h5>
-                    </div>
-                    <div className="col-2">
-                      <img src={bookmarkImg} alt="" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-2">
-                      <img src={shareImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={downloadImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
-
-                    <div className="col-2">
-                      <img src={viewImg} alt="" />
-                    </div>
-                    <div className="col-4 views">799 views</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
+
+      </div>
     </div>
   )
 }
