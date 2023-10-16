@@ -41,9 +41,9 @@ function Login() {
 
           <p style={{ color: '#777777' }}>Step Inside the Headlines.</p>
           <label>Email</label>
-          <br></br>
-          <input type='text' placeholder='Email for magic codes' className='inpt-user' onChange={(e) => { setusername(e.target.value) }} /><br></br>
-          <label>Password</label><br></br>
+          
+          <input type='text' placeholder='Email for magic codes' className='inpt-user' onChange={(e) => { setusername(e.target.value) }} />
+          <label>Password</label>
           <input type='password' placeholder='Shhh... your password' className='inpt-pwd' onChange={(e) => { setpassword(e.target.value) }} />
           <button className='btn-log' onClick={(e) => { login(e) }}>Get Started</button>
           <p className='login-text'>or continue with</p>

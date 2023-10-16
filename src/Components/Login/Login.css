@@ -31,12 +31,15 @@
     color: black;
     margin-top: 0px;
   }
-  
+  .btn-google.btn-log:hover {
+    background: #a2a2a2;
+}
+
   .btn-google img{
     padding-right: 10px;
   }
   .btn-log:hover {
-    background: linear-gradient(90deg, #1D2671, #C33764); /* Reverse the gradient on hover */
+    background: linear-gradient(90deg, #1D2671, #C33764);
   }
   
 
