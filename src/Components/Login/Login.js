@@ -47,7 +47,7 @@ function Login() {
           <input type='password' placeholder='Shhh... your password' className='inpt-pwd' onChange={(e) => { setpassword(e.target.value) }} />
           <button className='btn-log' onClick={(e) => { login(e) }}>Get Started</button>
           <p className='login-text'>or continue with</p>
-           <button className='btn-log btn-google'> <img src={google} height={33} />Sign up with Google </button> 
+           <button className='btn-log btn-google'> <img src={google} height={33} />Sign in with Google </button> 
            <p className='login-text'>Not one among us? <a href='#'>Sign up now!</a></p>
         </form>
       </div>
