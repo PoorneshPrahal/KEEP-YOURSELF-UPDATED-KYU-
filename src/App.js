@@ -11,6 +11,7 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
+import Popup from "./Components/Popup/Popup";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
 
       <Route path="/comments" element={<Comments/>}/>
 
+      <Route path="/popup" element={<Popup/>}/>
 
 
 

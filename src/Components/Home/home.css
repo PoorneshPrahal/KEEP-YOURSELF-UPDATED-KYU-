@@ -247,3 +247,29 @@ line-height: normal;
     margin-left: auto;
     margin-right: auto;
 }
+@media (max-width: 768px) {
+    .card-1{
+        width: 350px;
+    }
+    
+}
+
+
+@media (min-width: 768px) and (max-width: 1299px) {
+    .card-1{
+        width: 330px;
+    }
+    .card-2{
+        width: 330px;
+    }
+}
+
+
+@media (min-width: 1300px) {
+    .card-1{
+        width: 410px;
+    }
+    .card-2{
+        width: 410px;
+    }
+}
