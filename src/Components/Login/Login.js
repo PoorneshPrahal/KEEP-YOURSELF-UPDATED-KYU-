@@ -39,7 +39,7 @@ function Login() {
 
 
 
-          <p style={{ color: '#777777' }}>Inside the Headlines.</p>
+          <p style={{ color: '#777777' }}>Step Inside the Headlines.</p>
           <label>Email</label>
           <br></br>
           <input type='text' placeholder='Email for magic codes' className='inpt-user' onChange={(e) => { setusername(e.target.value) }} /><br></br>
