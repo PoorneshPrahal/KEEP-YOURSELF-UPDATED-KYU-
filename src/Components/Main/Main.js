@@ -1,91 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "../Sidebar/Sidebar.js";
-import Request from "../Requesting/Request.js";
-import { Link } from "react-router-dom";
 
+import Genre from "../Requesting/Genre.jsx";
+import CardSkeleton from "../News/CardSkeleton.jsx";
 const Main = () => {
+  const [isloading1, setIsLoading1] = useState(true);
+  const [isloading2, setIsLoading2] = useState(true);
+  const [isloading3, setIsLoading3] = useState(true);
+  const [isloading4, setIsLoading4] = useState(true);
+  const arr = ["Technology", "Politics", "Sports"];
+
+  const handleLoading1 = () => {
+    setIsLoading1(false);
+  };
+  const handleLoading2 = () => {
+    setIsLoading2(false);
+  };
+  const handleLoading3 = () => {
+    setIsLoading3(false);
+  };
+  const handleLoading4 = () => {
+    setIsLoading4(false);
+  };
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
       <div className="fullpage" style={{ width: "100%" }}>
-        <div
-          style={{
-            display: "inline-block",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginLeft: "3%",
-              marginRight: "3%",
-            }}
-          >
-            <span style={{ fontSize: "1.7em", fontWeight: "600" }}>
-              Technology
-            </span>
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              <span style={{ fontSize: "1.4em" }}>See all</span>
-            </Link>
-          </div>
-
-          <Request query="Technology" />
-        </div>
-
-        <div
-          style={{
-            display: "inline-block",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginLeft: "3%",
-              marginRight: "3%",
-            }}
-          >
-            <span style={{ fontSize: "1.7em", fontWeight: "600" }}>
-              Technology
-            </span>
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              <span style={{ fontSize: "1.4em" }}>See all</span>
-            </Link>
-          </div>
-
-          <Request query="Technology" />
-        </div>
-
-        <div
-          style={{
-            display: "inline-block",
-            width: "100%",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginLeft: "3%",
-              marginRight: "3%",
-            }}
-          >
-            <span style={{ fontSize: "1.7em", fontWeight: "600" }}>
-              Technology
-            </span>
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              <span style={{ fontSize: "1.4em" }}>See all</span>
-            </Link>
-          </div>
-
-          <Request query="Technology" />
-        </div>
+        <div className="row">{isloading1 && <CardSkeleton cards={3} />}</div>
+        <div className="row">{isloading2 && <CardSkeleton cards={3} />}</div>
+        <div className="row">{isloading3 && <CardSkeleton cards={3} />}</div>
+        <div className="row">{isloading4 && <CardSkeleton cards={3} />}</div>
+        <Genre query={arr} handleLoading={handleLoading1} />
+        <Genre query={["Technology"]} handleLoading={handleLoading2} />
+        <Genre query={["Horoscope"]} handleLoading={handleLoading3} />
+        <Genre query={["Sports"]} handleLoading={handleLoading4} />
       </div>
     </div>
   );

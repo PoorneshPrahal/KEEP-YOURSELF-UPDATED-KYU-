@@ -1,31 +1,43 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import news1 from "../../images/news1.png";
 import bookmarkImg from "../../images/bookmarkImg.png";
 import shareImg from "../../images/shareImg.png";
 import downloadImg from "../../images/downloadImg.png";
 import chatImg from "../../images/chatImg.png";
 import viewImg from "../../images/viewsImg.png";
+import logo from "../../images/logo.jpg";
 
 const Request = (props) => {
-  const [tech, setTech] = useState([
-    { title: "Hi, I am Poornesh.... I am doing this to learn react" },
-    { title: "Hi, I am Poornesh.... I am doing this to learn react" },
-    { title: "Hi, I am Poornesh.... I am doing this to learn react" },
-  ]);
+  const [tech, setTech] = useState([]);
   useEffect(() => {
-    axios
-      .get(
-        `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&category=${props.query}&size=3&language=en`
-      )
-      .then((res) => {
-        setTech(res.data.results);
-        console.log(tech);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (props.query.length === 1) {
+      axios
+        .get(
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${props.query[0]}&size=3&language=en`
+        )
+        .then((res) => {
+          setTech(res.data.results);
+          console.log(tech);
+          props.handleLoad();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .get(
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
+        )
+        .then((res) => {
+          setTech(res.data.results);
+          console.log(tech);
+          props.handleLoad();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
   return (
     <div
@@ -44,7 +56,7 @@ const Request = (props) => {
             <div class="card card-2">
               <img
                 class="card-img-top card2-img"
-                src={news1}
+                src={news.image_url || logo}
                 alt="Card image cap"
               />
               <div class="card-body">
