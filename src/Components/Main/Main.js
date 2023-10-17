@@ -26,7 +26,12 @@ const Main = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      <div className="fullpage" style={{ width: "100%" }}>
+      <div
+        className="fullpage"
+        style={{
+          width: "100%",
+        }}
+      >
         <div className="row">{isloading1 && <CardSkeleton cards={3} />}</div>
         <div className="row">{isloading2 && <CardSkeleton cards={3} />}</div>
         <div className="row">{isloading3 && <CardSkeleton cards={3} />}</div>

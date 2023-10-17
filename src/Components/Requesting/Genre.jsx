@@ -15,9 +15,9 @@ const Genre = (props) => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
-          marginLeft: "3%",
-          marginRight: "3%",
+          alignItems: "flex-end",
+          marginLeft: "2%",
+          marginRight: "2%",
         }}
       >
         <span style={{ fontSize: "1.7em", fontWeight: "600" }}>

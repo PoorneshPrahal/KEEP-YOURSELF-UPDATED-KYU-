@@ -21,7 +21,11 @@ function NewsCard({ article }) {
             <div className="row">
               <div className="col-10">
                 <h5 class="card-title card2-title">
-                  <Link to="/specific" state={article}>
+                  <Link
+                    to="/specific"
+                    state={article}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
                     {article.title}
                   </Link>
                 </h5>
