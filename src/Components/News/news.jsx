@@ -86,7 +86,7 @@ function News(props) {
           console.log(err);
         });
     }
-  };
+  }; 
 
   window.onscroll = () => {
     // console.log("Scrolled");
