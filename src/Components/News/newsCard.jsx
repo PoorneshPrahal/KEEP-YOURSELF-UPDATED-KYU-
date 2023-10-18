@@ -8,9 +8,14 @@ import viewImg from "../../images/viewsImg.png";
 import bookmarkImg from "../../images/bookmarkImg.png";
 import { Link } from "react-router-dom";
 function NewsCard({ article }) {
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
   return (
-    <div className="col">
-      <div style={{ marginTop: "3%", padding: "4%" }}>
+    <div className="col-4" >
+      <div style={{ marginTop: "2%", padding: "2%" }}>
         <div class="card card-2">
           <img
             class="card-img-top card2-img"
@@ -48,7 +53,7 @@ function NewsCard({ article }) {
               <div className="col-2">
                 <img src={viewImg} alt="" />
               </div>
-              <div className="col-4 views">799 views</div>
+              <div className="col-4 views">{getRndInteger(100,1000)}</div>
             </div>
           </div>
         </div>

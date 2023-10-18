@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./news.css";
 import Sidebar from "../Sidebar/Sidebar";
-import Navbar from "../Navbar/Navbar";
+
 
 import axios from "axios";
 import NewsCard from "./newsCard";
 import CardSkeleton from "./CardSkeleton";
 import { useLocation } from "react-router-dom";
+import profilePic from "../../images/profilepic.svg";
+import coins from "../../images/coins.png";
 
 function News(props) {
   const [articles, setArticles] = useState([]);
@@ -19,6 +21,10 @@ function News(props) {
   useEffect(() => {
     fetchInitial();
   }, []);
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
 
   const lazyLoad = async () => {
     if (state.length === 1) {
@@ -105,10 +111,27 @@ function News(props) {
   };
 
   return (
-    <div>
-      <div>
+
+
+    <div style={{ display: "flex" }}>
+       <Sidebar />
+       
+      <div >
+      <div class="d-flex justify-content-between">
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="d-flex">
+    <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
+    <img src={coins} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
+    </div>
+    <div class="p-2 d-flex"  >
+      <img src={profilePic} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+    </div>
+  </div>
+</div>
         <div className="container ">
-          <p className="heading">Featured News</p>
+         
 
           <div className="row">
             {articles.map((article, index) => {

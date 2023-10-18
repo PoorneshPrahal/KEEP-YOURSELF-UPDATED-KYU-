@@ -10,19 +10,38 @@ import summarizer from "../../images/summarizer.jpg";
 import share from "../../images/share.jpg";
 import readaloud from "../../images/readaloud.png";
 import Send from "../../images/Send.jpg";
+import { useSpeechSynthesis } from 'react-speech-kit';
+import profilePic from "../../images/profilepic.svg";
+import coins from "../../images/coins.png";
 
 const SpecificNews = (props) => {
   const location = useLocation();
+  const { speak, cancel } = useSpeechSynthesis();
+
   const state = location.state;
   const countries = state.country;
   const categories = state.category;
   console.log(categories);
   console.log(state);
 
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
+  const readAloudFunction = ()=>{
+    speak({ text: state.content })
+  }
+
   function stringTitleCase(_string) {
     let capitalizeLetterFunc = (match) => match.toUpperCase();
     return _string.replace(/(^\w{1})|(\s{1}\w{1})/g, capitalizeLetterFunc);
   }
+
+  const summarize = ()=>{
+    cancel();
+  }
+
+
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <Sidebar />
@@ -32,6 +51,19 @@ const SpecificNews = (props) => {
           width: "100%",
         }}
       >
+        <div class="d-flex justify-content-between">
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="d-flex">
+    <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
+    <img src={coins} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
+    </div>
+    <div class="p-2 d-flex"  >
+      <img src={profilePic} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+    </div>
+  </div>
+</div>
         <div>
           <div
             style={{
@@ -48,6 +80,7 @@ const SpecificNews = (props) => {
                 marginLeft: "1%",
                 marginRight: "1%",
               }}
+              onClick={summarize}
             >
               <img src={summarizer} style={{ width: "23%" }} alt="" srcset="" />
               <span> Summarize</span>
@@ -60,6 +93,7 @@ const SpecificNews = (props) => {
                 marginLeft: "1%",
                 marginRight: "1%",
               }}
+              onClick={readAloudFunction}
             >
               <img src={readaloud} style={{ width: "23%" }} alt="" srcset="" />
               <span> Read-Aloud</span>
