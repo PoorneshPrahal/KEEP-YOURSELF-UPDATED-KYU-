@@ -35,7 +35,7 @@ const Main = () => {
       {/* <Comments show={show} handleClass={handleClick}/> */}
       {show && <Comments handleClick={handleClick}/>}
 
-      <button onClick={handleClick2}>Summarize</button>
+      <button onClick={handleClick2}>Suarize</button>
       
       <div style={{ display: "inline-block" }}></div>
     </div>
