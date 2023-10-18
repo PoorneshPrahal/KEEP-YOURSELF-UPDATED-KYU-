@@ -1,21 +1,38 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import {getAuth} from "firebase/auth"
-import {getFirestore} from 'firebase/firestore'
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDGphVPbfUT2vrN15FsMohzA_FIRs2OzdU",
-  authDomain: "comments-d9ab8.firebaseapp.com",
-  projectId: "comments-d9ab8",
-  storageBucket: "comments-d9ab8.appspot.com",
-  messagingSenderId: "471456430082",
-  appId: "1:471456430082:web:575f4c29c1eab30a348f1b"
+  apiKey: "AIzaSyD-WR3j6My8YIFDkr6zuAiNaNnyZT9wiFk",
+  authDomain: "ekyu-708c9.firebaseapp.com",
+  projectId: "ekyu-708c9",
+  storageBucket: "ekyu-708c9.appspot.com",
+  messagingSenderId: "1090294282722",
+  appId: "1:1090294282722:web:1a62711b8e3e8a7328a1bb",
+  measurementId: "G-NJGBZ0LGPZ"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db =  getFirestore(app);
+const auth = getAuth(app);
+const firestore = getFirestore(app);
+
+export { app, auth, firestore };
+
+
+
+
+// Import the functions you need from the SDKs you need
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+// Initialize Firebase

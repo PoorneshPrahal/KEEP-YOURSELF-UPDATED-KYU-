@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import '../Login/Login.css'
-import {auth,db} from '../../firebase'
+import {auth,firestore} from '../../firebase'
 import { collection,addDoc } from 'firebase/firestore';
 
 
@@ -11,7 +11,7 @@ function Signup() {
     const [name,setname]  = useState()
     const [username,setusername] = useState()
     const[password,setpassword] = useState()
-    const userRef = collection(db,'UsersDatas')
+    const userRef = collection(firestore,'UsersDB')
 
 
 

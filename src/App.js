@@ -11,6 +11,7 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
+import Summarize from "./Components/Summarize/Summarize";
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
       <Route path="/signup" element={<Signup/>}/>
 
       <Route path="/comments" element={<Comments/>}/>
+
+      <Route path="/summarize" element={<Summarize/>}/>
 
 
 
