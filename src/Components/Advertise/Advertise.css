@@ -1,0 +1,47 @@
+.container-advertise{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+ }
+
+.container input{
+    border: 1.4px solid #ccc;
+}
+
+.file-input{
+    margin-left: -380px;
+    padding: 20px;
+}
+
+h1{
+    padding: 10px;
+}
+
+.container-advertise button{
+    width: 250px;
+    height: 40px;
+    margin-top:20px;
+    font-size: 17px;
+    background: linear-gradient(90deg, #C33764, #1D2671);
+    color: white; 
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: background 0.3s ease; 
+}
+
+.container-advertise button:hover{
+     background: linear-gradient(90deg, #1D2671, #C33764);
+    }
+
+.footer{
+    height: 250px;
+  
+}
+
+.col-4{
+    padding-top: 30px;
+}
+

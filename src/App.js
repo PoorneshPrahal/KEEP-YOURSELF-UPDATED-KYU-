@@ -12,6 +12,7 @@ import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
 import Popup from "./Components/Popup/Popup";
+import Advertise from "./Components/Advertise/Advertise";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 
       <Route path="/popup" element={<Popup/>}/>
 
+      <Route path="/advertise" element={<Advertise/>}/>
 
 
       </Routes>
