@@ -1,11 +1,9 @@
 import "./App.css";
 import Home from "./Components/Home/home";
 import News from "./Components/News/news";
+import SpecificNews from "./Components/SpecificNews/SpecificNews.jsx";
 
-import {BrowserRouter, Routes, Route} from "react-router-dom"
-
-import Navbar from "./Components/Navbar/Navbar.js";
-import Sidebar from "./Components/Sidebar/Sidebar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Main from "./Components/Main/Main";
 import Login from "./Components/Login/Login";
@@ -16,16 +14,15 @@ import Summarize from "./Components/Summarize/Summarize";
 function App() {
   return (
     <div className="App">
-      
       <BrowserRouter>
-      
-      <Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-      <Route path="/" element={<Home/>}/>
+          <Route path="/main" element={<Main />} />
 
       <Route path="/main" element={<Main/>}/>
 
-      <Route path="/news" element={<News/>}/>
+          <Route path="/news" element={<News />} />
 
       <Route path="/login" element={<Login/>}/>
 
@@ -36,14 +33,9 @@ function App() {
       <Route path="/summarize" element={<Summarize/>}/>
 
 
-
-
-      </Routes>
-      
-      
+          <Route path="/specific" element={<SpecificNews />} />
+        </Routes>
       </BrowserRouter>
-
-
     </div>
   );
 }

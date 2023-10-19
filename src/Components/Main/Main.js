@@ -1,43 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "../Sidebar/Sidebar.js";
-import { useState, useEffect } from "react";
+
+import Genre from "../Requesting/Genre.jsx";
+import CardSkeleton from "../News/CardSkeleton.jsx";
 import Comments from "../Comments/Comments.js";
 const Main = () => {
+  const [isloading1, setIsLoading1] = useState(true);
+  const [isloading2, setIsLoading2] = useState(true);
+  const [isloading3, setIsLoading3] = useState(true);
+  const [isloading4, setIsLoading4] = useState(true);
+  const arr = ["Technology", "Politics", "Sports"];
 
-  const [tech, setTech] = useState([]);
-  const [show,setShow] = useState(false)
-
-  const handleClick = () => {
-    setShow(!show)
-  }
-
-  const handleClick2 = () => {
-    setShow(!show)
-  }
-  
-  useEffect(() => {
-    axios
-      .get(
-        "https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=technology&size=3"
-      )
-      .then((res) => {
-        setTech(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const handleLoading1 = () => {
+    setIsLoading1(false);
+  };
+  const handleLoading2 = () => {
+    setIsLoading2(false);
+  };
+  const handleLoading3 = () => {
+    setIsLoading3(false);
+  };
+  const handleLoading4 = () => {
+    setIsLoading4(false);
+  };
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <Sidebar />
-      <button onClick={handleClick}>Comments</button>
-      {/* <Comments show={show} handleClass={handleClick}/> */}
-      {show && <Comments handleClick={handleClick}/>}
-
-      <button onClick={handleClick2}>Suarize</button>
-      
-      <div style={{ display: "inline-block" }}></div>
+      <div
+        className="fullpage"
+        style={{
+          width: "100%",
+        }}
+      >
+        <div className="row">{isloading1 && <CardSkeleton cards={3} />}</div>
+        <div className="row">{isloading2 && <CardSkeleton cards={3} />}</div>
+        <div className="row">{isloading3 && <CardSkeleton cards={3} />}</div>
+        <div className="row">{isloading4 && <CardSkeleton cards={3} />}</div>
+        <Genre query={arr} handleLoading={handleLoading1} />
+        <Genre query={["Technology"]} handleLoading={handleLoading2} />
+        <Genre query={["Horoscope"]} handleLoading={handleLoading3} />
+        <Genre query={["Sports"]} handleLoading={handleLoading4} />
+      </div>
     </div>
   );
 };

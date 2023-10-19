@@ -1,150 +1,149 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import "./news.css";
-import Sidebar from '../Sidebar/Sidebar';
-import Navbar from '../Navbar/Navbar';
-import news1 from "../../images/news1.png";
-import news2 from "../../images/news2.png";
-import news3 from "../../images/news3.png";
-import shareImg from "../../images/shareImg.png";
-import downloadImg from "../../images/downloadImg.png";
-import chatImg from "../../images/chatImg.png";
-import viewImg from "../../images/viewsImg.png";
-import bookmarkImg from "../../images/bookmarkImg.png";
+import Sidebar from "../Sidebar/Sidebar";
 
 
-function News() {
+import axios from "axios";
+import NewsCard from "./newsCard";
+import CardSkeleton from "./CardSkeleton";
+import { useLocation } from "react-router-dom";
+import profilePic from "../../images/profilepic.svg";
+import coins from "../../images/coins.png";
+
+function News(props) {
+  const [articles, setArticles] = useState([]);
+  const [nextPage, setNextPage] = useState(null);
+  const [isLoading, SetIsLoading] = useState(true);
+  const location = useLocation();
+  const state = location.state;
+  console.log(state);
+
+  useEffect(() => {
+    fetchInitial();
+  }, []);
+
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
+  const lazyLoad = async () => {
+    if (state.length === 1) {
+      axios
+        .get(
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]}&language=en&page=${nextPage}`
+        )
+        .then((res) => {
+          const newArticles = res.data.results;
+
+          setArticles((prevArticles) => [...prevArticles, ...newArticles]);
+          setNextPage(res.data.nextPage);
+          SetIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .get(
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]},${state[1]},${state[2]}&language=en&page=${nextPage}`
+        )
+        .then((res) => {
+          console.log(res.data.results);
+          setArticles(res.data.results);
+          setNextPage(res.data.nextPage);
+          console.log(res.data.nextPage);
+          SetIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const fetchInitial = async () => {
+    if (state.length === 1) {
+      axios
+        .get(
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]}&language=en`
+        )
+        .then((res) => {
+          console.log(res.data.results);
+          setArticles(res.data.results);
+          setNextPage(res.data.nextPage);
+          console.log(res.data.nextPage);
+          SetIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      axios
+        .get(
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]},${state[1]},${state[2]}&language=en`
+        )
+        .then((res) => {
+          console.log(res.data.results);
+          setArticles(res.data.results);
+          setNextPage(res.data.nextPage);
+          console.log(res.data.nextPage);
+          SetIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }; 
+
+  window.onscroll = () => {
+    // console.log("Scrolled");
+    // console.log("Window Height:", window.innerHeight);
+    // console.log("Scroll Top:", document.documentElement.scrollTop);
+    // console.log("Document Height:", document.documentElement.offsetHeight);
+    // console.log(window.innerHeight + document.documentElement.scrollTop);
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - 2
+    ) {
+      SetIsLoading(true);
+
+      lazyLoad();
+    }
+  };
+
   return (
-    <div>
-      
-      <Sidebar/>
-      <div className="container div3" style={{display : "inline-block",width:"50%"}}>
-        <p className="heading">Featured News</p>
-        <div className="row">
-          <div className="col">
-            <div style={{ marginTop: "3%" }}>
-              <div class="card card-2">
-                <img
-                  class="card-img-top card2-img"
-                  src={news1}
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <div className="row">
-                    <div className="col-10">
-                      <h5 class="card-title card2-title">
-                        Travelers pay more than 2k, Trudeau says
-                      </h5>
-                    </div>
-                    <div className="col-2">
-                      <img src={bookmarkImg} alt="" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-2">
-                      <img src={shareImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={downloadImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
 
-                    <div className="col-2">
-                      <img src={viewImg} alt="" />
-                    </div>
-                    <div className="col-4 views">799 views</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="col">
-            <div style={{ marginTop: "3%" }}>
-              <div class="card card-2">
-                <img
-                  class="card-img-top card2-img"
-                  src={news2}
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <div className="row">
-                    <div className="col-10">
-                      <h5 class="card-title card2-title">
-                        RBI extends last date of depositing Rs 2,000 notes to
-                        October 7
-                      </h5>
-                    </div>
-                    <div className="col-2">
-                      <img src={bookmarkImg} alt="" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-2">
-                      <img src={shareImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={downloadImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
+    <div style={{ display: "flex" }}>
+       <Sidebar />
+       
+      <div >
+      <div class="d-flex justify-content-between">
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="d-flex">
+    <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
+    <img src={coins} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
+    </div>
+    <div class="p-2 d-flex"  >
+      <img src={profilePic} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+    </div>
+  </div>
+</div>
+        <div className="container ">
+         
 
-                    <div className="col-2">
-                      <img src={viewImg} alt="" />
-                    </div>
-                    <div className="col-4 views">799 views</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="row">
+            {articles.map((article, index) => {
+              return <NewsCard article={article} key={article.id} />;
+            })}
 
-          <div className="col">
-            <div style={{ marginTop: "3%" }}>
-              <div class="card card-2">
-                <img
-                  class="card-img-top card2-img"
-                  src={news3}
-                  alt="Card image cap"
-                />
-                <div class="card-body">
-                  <div className="row">
-                    <div className="col-10">
-                      <h5 class="card-title card2-title">
-                        Political news on president Joe Biden
-                      </h5>
-                    </div>
-                    <div className="col-2">
-                      <img src={bookmarkImg} alt="" />
-                    </div>
-                  </div>
-                  <div className="row">
-                    <div className="col-2">
-                      <img src={shareImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={downloadImg} alt="" />
-                    </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
-
-                    <div className="col-2">
-                      <img src={viewImg} alt="" />
-                    </div>
-                    <div className="col-4 views">799 views</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {isLoading && <CardSkeleton cards={6} />}
           </div>
         </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default News
+export default News;

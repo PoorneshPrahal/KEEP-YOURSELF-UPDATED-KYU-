@@ -16,9 +16,7 @@ const Sidebar = () => {
     <div style={{ display: "inline-block" }}>
       <CDBSidebar textColor="#000" backgroundColor="#fff">
         <CDBSidebarHeader
-          prefix={
-            <img style={{ width: "1.3em" }} src={hamburger} alt={hamburger} />
-          }
+         
         >
           <a href="/" className="text-decoration-none">
             <img style={{ width: "4em" }} src={logo} alt={logo} />
