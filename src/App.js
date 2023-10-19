@@ -9,9 +9,10 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
-import Summarize from "./Components/Summarize/Summarize";
+// import Summarize from "./Components/Summarize/Summarize";
 import Popup from "./Components/Popup/Popup";
 import Advertise from './Components/Advertise/Advertise'
+import Bookmarks from "./Components/Bookmarks/bookmarks";
 
 function App() {
   return (
@@ -32,12 +33,13 @@ function App() {
 
       <Route path="/comments" element={<Comments/>}/>
 
-      <Route path="/summarize" element={<Summarize/>}/>
+      {/* <Route path="/summarize" element={<Summarize/>}/> */}
       <Route path="/popup" element={<Popup/>}/>
       <Route path="/advertise" element={<Advertise/>}/>
 
 
           <Route path="/specific" element={<SpecificNews />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
         </Routes>
       </BrowserRouter>
     </div>

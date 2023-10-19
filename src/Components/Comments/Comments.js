@@ -16,9 +16,9 @@ function Comments(props) {
         const [coms,setcoms] = useState([]);
         const [l,setl] = useState(false);
 
-console.log(props.show)
+// console.log(props.show)
         useEffect(()=>{
-            // getComments()
+            getComments()
             
         },[])
 

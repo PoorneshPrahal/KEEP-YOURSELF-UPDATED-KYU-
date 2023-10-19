@@ -1,16 +1,38 @@
 import React from "react";
 import news1 from "../../images/logo.jpg";
-
+import {firestore} from '../../firebase'
 import shareImg from "../../images/shareImg.png";
 import downloadImg from "../../images/downloadImg.png";
 import chatImg from "../../images/chatImg.png";
 import viewImg from "../../images/viewsImg.png";
 import bookmarkImg from "../../images/bookmarkImg.png";
 import { Link } from "react-router-dom";
+import { doc, setDoc } from 'firebase/firestore';
+
 function NewsCard({ article }) {
 
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
+  const bookmark = async()=>{
+
+    console.log("Button clicked")
+
+    try {
+      const val = doc(firestore,"Bookmarks","8CEou27AnNUuJ9hQfrZO")
+      const collectionval = doc(val,"user1",article.article_id)
+      
+      await setDoc(collectionval, article);
+
+
+     } catch (error) {
+       console.error('Error adding subcomment: ', error);
+     }
+  
+     
+
+
   }
 
   return (
@@ -41,7 +63,7 @@ function NewsCard({ article }) {
             </div>
             <div className="row">
               <div className="col-2">
-                <img src={shareImg} alt="" />
+                <img src={shareImg} alt="" onClick={bookmark} />
               </div>
               <div className="col-2">
                 <img src={downloadImg} alt="" />
