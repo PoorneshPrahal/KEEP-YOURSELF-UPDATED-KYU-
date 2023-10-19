@@ -1,28 +1,110 @@
-.cont-log{
-    margin-left: 37%;
-    margin-top: 10%;
+
+.inpt-user,.inpt-pwd{
+    width: 350px;
+    height: 40px;
+    border-radius: 10px;
+    border-color: #777777;
+    border-width: 0.5px;
+    padding: 10px;
+}
+.login-container label{
+    color: rgb(45, 45, 45);
+    padding: 10px;
+
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-}
 
-.inpt-user{
-    width: 300px;
-}
-
-.inpt-pwd{
-    width: 300px;
-}
 .btn-log{
-    width: 100px;
+    width: 350px;
+    height: 40px;
     margin-top:20px;
-    margin-left: 90px;
+    font-size: 17px;
+    background: linear-gradient(90deg, #C33764, #1D2671);
+    color: white; 
+    border: none;
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: background 0.3s ease; 
+  }
+  .btn-google{
+    background: rgb(213, 213, 213);
+    color: black;
+    margin-top: 0px;
+  }
+  .btn-google.btn-log:hover {
+    background: #a2a2a2;
 }
 
-.h1-or{
-    margin-top:20px;
-    margin-left: 120px;
+  .btn-google img{
+    padding-right: 10px;
+  }
+  .btn-log:hover {
+    background: linear-gradient(90deg, #1D2671, #C33764);
+  }
+  
 
+.login-text{
+    padding-top:10px;
+    text-align: center;
 }
+ 
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 30px;
+    width: 1000px;
+    margin-left: 135px;
+    position:relative;
+  }
+  
+  .login-box {
+    flex: 1;
+    padding: 20px;
+    padding-left: 100px;
+  }
+  
+  .login-image {
+    flex: 1;
+    text-align: center;
+  
+  }
+  .login-image img{
+    position: relative;
+    z-index: 1;
+  }
+  .right-bar {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 520px;
+    width: 300px;
+    z-index: 0;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(195, 55, 100, 0.7), rgba(29, 38, 113, 0.7));
+
+  }
+  @media (min-width: 1300px) {
+    .login-container {
+        width: 56%; /* Make the container span the full width */
+        margin: 0 auto; 
+       margin-top:150px;
+    }
+  }
+
+ 
+  
+  
+  
+  
+  
+  
+
+  
+
+  
