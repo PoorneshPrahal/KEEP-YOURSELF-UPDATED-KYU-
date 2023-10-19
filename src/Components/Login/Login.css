@@ -78,24 +78,25 @@
     position: relative;
     z-index: 1;
   }
-  .right-bar {
+  .login-container .right-bar {
     position: absolute;
     right: 0;
     bottom: 0;
     height: 520px;
     width: 300px;
-    z-index: 0;
+    z-index: 0 !important;
     border-radius: 10px;
     background: linear-gradient(180deg, rgba(195, 55, 100, 0.7), rgba(29, 38, 113, 0.7));
 
   }
-  @media (min-width: 1300px) {
+  
+  /* @media (min-width: 1300px) {
     .login-container {
-        width: 56%; /* Make the container span the full width */
+        width: 56%; 
         margin: 0 auto; 
        margin-top:150px;
     }
-  }
+  } */
 
  
   

@@ -19,7 +19,7 @@ import bookmarkImg from "../../images/bookmarkImg.png";
 import chooseUsImg from "../../images/chooseUsImg.png";
 import KYUImg from "../../images/KYUImg.png";
 import Navbar from "../Navbar/Navbar";
-
+import Popup from "../Popup/Popup";
 
 export default function Home() {
   return (
@@ -330,7 +330,7 @@ export default function Home() {
       </div>
 
 
-
+<Popup/>
 
     </div>
   );
