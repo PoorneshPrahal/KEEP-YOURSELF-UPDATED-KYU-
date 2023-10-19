@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -17,7 +17,7 @@ import coins from "../../images/coins.png";
 const SpecificNews = (props) => {
   const location = useLocation();
   const { speak, cancel } = useSpeechSynthesis();
-
+  const [toggle, setToggle] = useState(true)
   const state = location.state;
   const countries = state.country;
   const categories = state.category;
@@ -29,7 +29,17 @@ const SpecificNews = (props) => {
   }
 
   const readAloudFunction = ()=>{
+    
+    if(toggle){
     speak({ text: state.content })
+    setToggle(false)
+    }
+    else{
+      cancel()
+      setToggle(true)
+
+    }
+
   }
 
   function stringTitleCase(_string) {
@@ -95,7 +105,7 @@ const SpecificNews = (props) => {
               }}
               onClick={readAloudFunction}
             >
-              <img src={readaloud} style={{ width: "23%" }} alt="" srcset="" />
+              <img src={toggle ? readaloud : share} style={{ width: "23%" }} alt="" srcset="" />
               <span> Read-Aloud</span>
             </Button>
           </div>
