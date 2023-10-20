@@ -20,7 +20,7 @@ const Request = (props) => {
     if (props.query.length === 1) {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=${props.query[0]}&size=3&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${props.query[0]}&size=3&language=en`
         )
         .then((res) => {
           setTech(res.data.results);
@@ -33,7 +33,7 @@ const Request = (props) => {
     } else {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
         )
         .then((res) => {
           setTech(res.data.results);

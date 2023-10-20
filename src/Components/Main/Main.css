@@ -1,0 +1,57 @@
+.BreakingNews{
+
+    border-radius: 32px;
+background: #FFF;
+box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
+padding: 1%;
+
+
+flex-shrink: 0;
+
+}
+
+.breakNewsGif{
+width: 193px;
+height: 35px;
+flex-shrink: 0;
+margin-top: 2%;
+margin-left: 2%;
+
+}
+
+
+
+@keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  .BreakNewsPara{
+    
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-top: 1%;
+    margin-left: 2%;
+    
+    
+    text-shadow: 0 0 0 transparent;
+    
+    animation:  fadeIn 8s ease-in-out; }
+    
+    @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+    

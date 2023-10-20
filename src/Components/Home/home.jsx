@@ -28,7 +28,13 @@ export default function Home(props) {
   const [flag, setflag] = useState(0);
   const location = useLocation();
   const state = location.state;
-  console.log(state);
+  const [userId, setUserId] = useState();
+  useEffect(()=>{
+    setUserId(localStorage.getItem("userId"))
+    console.log(localStorage.getItem("userId"))
+  },[])
+
+ 
   useEffect(() => {
     const colRef = collection(firestore, "UsersDatas");
     getDocs(colRef)

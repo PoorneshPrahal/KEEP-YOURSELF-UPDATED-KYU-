@@ -10,7 +10,7 @@ function CardSkeleton({ cards }) {
   return Array(cards)
     .fill(0)
     .map((item, i) => (
-      <div className="col" key={i}>
+      <div className="col-4" key={i}>
         <div style={{ marginTop: "3%", padding: "3%" }}>
           <div class="card card-2">
             <Skeleton

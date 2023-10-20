@@ -21,7 +21,7 @@ function NewsCard({ article }) {
 
     try {
       const val = doc(firestore,"Bookmarks","8CEou27AnNUuJ9hQfrZO")
-      const collectionval = doc(val,"user1",article.article_id)
+      const collectionval = doc(val,"user2",article.article_id)
       
       await setDoc(collectionval, article);
 

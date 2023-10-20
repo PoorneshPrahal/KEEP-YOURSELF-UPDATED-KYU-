@@ -4,21 +4,24 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import signin from "../../images/login.jpg";
 import google from "../../images/google.jpg";
+import { useNavigate } from 'react-router-dom'; 
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const [username, setusername] = useState();
   const [password, setpassword] = useState();
-  const [userId, setUserId] = useState();
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, username, password).then((res) => {
         console.log(res);
-        setUserId(res.user.uid);
+        
+        localStorage.setItem("userId",res.user.uid );
         console.log("verfied");
+        navigate('/');
       });
     } catch (e) {
       alert("Please check your credentials");
@@ -71,9 +74,9 @@ function Login() {
             Get Started
           </button>
           <p className="login-text">or continue with</p>
-          <Link to="/" state={userId}>
+         
             <button className="btn-log btn-google">Home</button>
-          </Link>
+       
           <button className="btn-log btn-google">
             {" "}
             <img src={google} height={33} />
