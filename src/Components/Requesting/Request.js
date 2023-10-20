@@ -27,7 +27,7 @@ const Request = (props) => {
     if (props.query.length === 1) {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${props.query[0]}&size=3&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=${props.query[0]}&size=3&language=en`
         )
         .then((res) => {
           setTech(res.data.results);
@@ -40,7 +40,7 @@ const Request = (props) => {
     } else {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
         )
         .then((res) => {
           setTech(res.data.results);
@@ -75,7 +75,7 @@ const Request = (props) => {
                 <div class="card-body">
                   <div className="row">
                     <div className="col-10">
-                      <h5 class="card-title card2-title">
+                      <h5 class="card-title card2-title ">
                         <Link
                           to="/specific"
                           state={news}
@@ -98,10 +98,12 @@ const Request = (props) => {
                     <div className="col-2">
                       <img src={downloadImg} alt="" />
                     </div>
+                    <div className="col-2">
                     <Link to='/comments'>
                 <img src={chatImg} alt="" onClick={openPopUp}/>
 
                 </Link>
+                </div>
 
                     <div className="col-2">
                       <img src={viewImg} alt="" />

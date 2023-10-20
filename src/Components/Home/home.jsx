@@ -357,7 +357,9 @@ export default function Home(props) {
           <div class="line"></div>
         </div>
       </div>
-      {flag && <Popup />}<ChatBot/>
+      
+      <Popup />
+      <ChatBot/>
 
     </div>
   );

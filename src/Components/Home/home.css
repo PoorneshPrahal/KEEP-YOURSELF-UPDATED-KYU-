@@ -268,13 +268,13 @@ line-height: normal;
     }
 }
 
-
-@media (min-width: 1400px) {
+/* 
+@media (min-width: 1450px) {
     .card-1{
         width: 410px;
     }
     .card-2{
         width: 410px;
     }
-}
+} */
 

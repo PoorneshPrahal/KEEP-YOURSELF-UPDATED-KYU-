@@ -3,8 +3,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import "../Login/Login.css";
 import { auth, firestore } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import signin from "../../images/login.jpg";
-import google from "../../images/google.jpg";
+import signin from "../../images/login.png";
+import google from "../../images/google.png";
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
