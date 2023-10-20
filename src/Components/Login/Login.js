@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
-import signin from "../../images/login.jpg";
-import google from "../../images/google.jpg";
+import signin from "../../images/login.png";
+import google from "../../images/google.png";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -71,9 +71,9 @@ function Login() {
             Get Started
           </button>
           <p className="login-text">or continue with</p>
-          <Link to="/" state={userId}>
+          {/* <Link to="/" state={userId}>
             <button className="btn-log btn-google">Home</button>
-          </Link>
+          </Link> */}
           <button className="btn-log btn-google">
             {" "}
             <img src={google} height={33} />
