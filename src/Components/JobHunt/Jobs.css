@@ -1,0 +1,23 @@
+.c1{
+    margin-top: 150px;
+    height: 45vh;
+    margin-left: 50px;
+}
+
+.c-t{
+
+    font-size: 12px;
+}
+
+.apply-btn{
+ display: flex;
+ justify-content: flex-end;
+ padding: 25px;
+ margin-top: 20px;
+}
+
+.c-txt{
+    max-height: 3rem; /* Adjust the height according to the number of lines you want to display */
+  overflow: hidden;
+  text-overflow:clip;
+}

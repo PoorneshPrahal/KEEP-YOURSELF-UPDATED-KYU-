@@ -12,6 +12,8 @@ import Comments from "./Components/Comments/Comments";
 import Summarize from "./Components/Summarize/Summarize";
 import Popup from "./Components/Popup/Popup";
 import Advertise from './Components/Advertise/Advertise'
+import Jobs from "./Components/JobHunt/Jobs";
+import Horoscope from "./Components/Horoscope/Horoscope";
 
 function App() {
   return (
@@ -36,8 +38,12 @@ function App() {
       <Route path="/popup" element={<Popup/>}/>
       <Route path="/advertise" element={<Advertise/>}/>
 
+      <Route path="/jobs" element={<Jobs/>}/>
+
 
           <Route path="/specific" element={<SpecificNews />} />
+
+          <Route path="/horoscope" element={<Horoscope/>} />
         </Routes>
       </BrowserRouter>
     </div>
