@@ -1,3 +1,8 @@
 .toarrange {
   display: inline-block;
 }
+.bookmark-btn{
+  border: none;
+  border-color:  red;
+  
+}

@@ -56,13 +56,15 @@ const Request = (props) => {
     >
       {tech.map((news, key) => {
         return (
-          <div className="col" style={{ display: "inline-block" }}>
+          <div className="col" style={{ display: "inline-block", padding:'10px'}}>
             <div style={{ marginTop: "3%", padding: "3%" }}>
               <div class="card card-2">
                 <img
                   class="card-img-top card2-img"
                   src={news.image_url || logo}
                   alt="Card image cap"
+             
+                 
                 />
                 <div class="card-body">
                   <div className="row">
@@ -78,9 +80,9 @@ const Request = (props) => {
                       </h5>
                     </div>
                     <div className="col-2">
-                      <button onClick={bookmarkfunc}>
+                    
                         <img src={bookmarkImg} alt="" />
-                      </button>
+                   
                     </div>
                   </div>
                   <div className="row">

@@ -10,7 +10,7 @@ const Genre = (props) => {
         width: "100%",
       }}
     >
-      {/* Here the Main page navbar should come */}
+
       <div
         style={{
           display: "flex",
@@ -20,7 +20,7 @@ const Genre = (props) => {
           marginRight: "2%",
         }}
       >
-        <span style={{ fontSize: "1.7em", fontWeight: "600" }}>
+        <span style={{ fontSize: "1.5em", fontWeight: "600" }}>
           {props.query.length === 1 ? props.query : "For You"}
         </span>
         <Link
@@ -28,7 +28,7 @@ const Genre = (props) => {
           state={props.query}
           style={{ textDecoration: "none", color: "black" }}
         >
-          <span style={{ fontSize: "1.4em" }}>See all</span>
+          <span style={{ fontSize: "1em", color:'blue'}}>See all</span>
         </Link>
       </div>
 
