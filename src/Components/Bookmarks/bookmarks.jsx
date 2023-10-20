@@ -1,0 +1,79 @@
+import React, { useEffect, useState } from 'react'
+import {firestore} from '../../firebase'
+import { addDoc, collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import profilePic from "../../images/profilepic.svg";
+import coins from "../../images/coins.png";
+import Sidebar from '../Sidebar/Sidebar';
+import NewsCard from '../News/newsCard';
+import CardSkeleton from '../News/CardSkeleton';
+import "../News/news.css";
+
+function Bookmarks() {
+
+    const [articles, setArticles] = useState([]);
+    const [isLoading, SetIsLoading] = useState(true);
+    useEffect(()=>{
+      showBookmarks();
+      
+    },[])
+
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
+  
+    const showBookmarks = async()=>{
+
+        try {
+            const val = doc(firestore, "Bookmarks", "8CEou27AnNUuJ9hQfrZO");
+            const collectionval = collection(val, "user1");
+            const querySnapshot = await getDocs(collectionval);
+            const bookmarksData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+            setArticles(bookmarksData);
+            SetIsLoading(false)
+            console.log(bookmarksData)
+            
+          } catch (error) {
+            console.error('Error fetching comments:', error);
+        
+          }
+
+    }
+
+  return (
+    
+
+<div style={{ display: "flex" }}>
+       <Sidebar />
+       
+      <div >
+      <div class="d-flex justify-content-between">
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="d-flex">
+    <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
+    <img src={coins} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
+    </div>
+    <div class="p-2 d-flex"  >
+      <img src={profilePic} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+    </div>
+  </div>
+</div>
+        <div className="container ">
+         
+
+          <div className="row">
+            {articles.map((article, index) => {
+              return <NewsCard article={article} key={article.id} />;
+            })}
+
+            {isLoading && <CardSkeleton cards={6} />}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  )
+}
+
+export default Bookmarks
