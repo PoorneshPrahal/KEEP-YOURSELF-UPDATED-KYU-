@@ -13,6 +13,7 @@ import Send from "../../images/Send.jpg";
 import { useSpeechSynthesis } from 'react-speech-kit';
 import profilePic from "../../images/profilepic.svg";
 import coins from "../../images/coins.png";
+import ChatBot from "../ChatBot/ChatBot.js";
 
 const SpecificNews = (props) => {
   const location = useLocation();
@@ -167,6 +168,7 @@ const SpecificNews = (props) => {
           </Button>
         </InputGroup>
       </div>
+      <ChatBot/>
     </div>
   );
 };

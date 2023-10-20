@@ -22,6 +22,7 @@ import chooseUsImg from "../../images/chooseUsImg.png";
 import KYUImg from "../../images/KYUImg.png";
 import Navbar from "../Navbar/Navbar";
 import Popup from "../Popup/Popup";
+import ChatBot from "../ChatBot/ChatBot";
 import { auth, app, firestore, collection, getDocs } from "../../firebase.js";
 
 export default function Home(props) {
@@ -151,9 +152,10 @@ export default function Home(props) {
             <div style={{ marginTop: "3%" }}>
               <div class="card card-2">
                 <img
-                  class="card-img-top card2-img"
+                  class="card-img-top card2-img foryou-img"
                   src={news1}
                   alt="Card image cap"
+                 
                 />
                 <div class="card-body">
                   <div className="row">
@@ -191,7 +193,7 @@ export default function Home(props) {
             <div style={{ marginTop: "3%" }}>
               <div class="card card-2">
                 <img
-                  class="card-img-top card2-img"
+                  class="card-img-top card2-img foryou-img"
                   src={news2}
                   alt="Card image cap"
                 />
@@ -232,7 +234,7 @@ export default function Home(props) {
             <div style={{ marginTop: "3%" }}>
               <div class="card card-2">
                 <img
-                  class="card-img-top card2-img"
+                  class="card-img-top card2-img foryou-img"
                   src={news3}
                   alt="Card image cap"
                 />
@@ -355,7 +357,8 @@ export default function Home(props) {
           <div class="line"></div>
         </div>
       </div>
-      {flag && <Popup />}
+      {flag && <Popup />}<ChatBot/>
+
     </div>
   );
 }

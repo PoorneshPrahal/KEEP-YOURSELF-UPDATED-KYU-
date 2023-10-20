@@ -11,8 +11,12 @@ import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
 // import Summarize from "./Components/Summarize/Summarize";
 import Popup from "./Components/Popup/Popup";
-import Advertise from './Components/Advertise/Advertise'
+import Advertise from './Components/Advertise/Advertise';
+import ChatBot from "./Components/ChatBot/ChatBot";
 import Bookmarks from "./Components/Bookmarks/bookmarks";
+import Jobs from "./Components/JobHunt/Jobs";
+import Horoscope from "./Components/Horoscope/Horoscope";
+import PositiveNews from "./Components/PositiveNews/PositiveNews";
 
 function App() {
   return (
@@ -37,9 +41,14 @@ function App() {
       <Route path="/popup" element={<Popup/>}/>
       <Route path="/advertise" element={<Advertise/>}/>
 
+      <Route path="/chatbot" element={<ChatBot />} />      <Route path="/jobs" element={<Jobs/>}/>
+
 
           <Route path="/specific" element={<SpecificNews />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+
+          <Route path="/horoscope" element={<Horoscope/>} />
+          <Route path="/positivenews" element={<PositiveNews/>} />
         </Routes>
       </BrowserRouter>
     </div>

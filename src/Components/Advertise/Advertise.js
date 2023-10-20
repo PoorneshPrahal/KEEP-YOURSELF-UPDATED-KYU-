@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import './Advertise.css'
 import Navbar from '../Navbar/Navbar'
 import KYUImg from "../../images/KYUImg.png";
+import ChatBot from '../ChatBot/ChatBot';
 
 
 function Advertise() {
@@ -101,7 +102,7 @@ function Advertise() {
       </div>
 
       </div>
-
+<ChatBot/>
     </div>
   )
 }

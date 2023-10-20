@@ -143,7 +143,7 @@ line-height: normal;
 
 
 .card-2{
-    width: 379px;
+width: 379px;
 height: 296px;
 flex-shrink: 0;
 border-radius: 32px;
@@ -155,6 +155,9 @@ box-shadow: 0px 2px 8px 0px rgba(99, 99, 99, 0.20);
 
     height: 193px;
     width: 379px;
+   
+    border-top-left-radius: 32px;
+    border-top-right-radius:32px ;
 }
 
 .card2-title{
@@ -253,5 +256,25 @@ line-height: normal;
     margin-left: auto;
     margin-right: auto;
 }
+@media (min-width: 768px) and (max-width: 1399px) {
+    .card-1{
+        width: 330px;
+    }
+    .card-2{
+        width: 300px;
+    }
+    .foryou-img{
+        width: 300px !important;
+    }
+}
 
+
+@media (min-width: 1400px) {
+    .card-1{
+        width: 410px;
+    }
+    .card-2{
+        width: 410px;
+    }
+}
 

@@ -8,13 +8,20 @@ import downloadImg from "../../images/downloadImg.png";
 import chatImg from "../../images/chatImg.png";
 import viewImg from "../../images/viewsImg.png";
 import logo from "../../images/logo.jpg";
+import './Request.css';
+
 
 const Request = (props) => {
   const [tech, setTech] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const bookmarkfunc = () => {
     alert("You have clicked/....");
   };
+
+  const openPopUp = () => {
+    setIsOpen(false);
+  }; 
 
   useEffect(() => {
     if (props.query.length === 1) {
@@ -56,13 +63,14 @@ const Request = (props) => {
     >
       {tech.map((news, key) => {
         return (
-          <div className="col" style={{ display: "inline-block" }}>
+          <div className="col" style={{ display: "inline-block", padding:'10px'}}>
             <div style={{ marginTop: "3%", padding: "3%" }}>
               <div class="card card-2">
                 <img
-                  class="card-img-top card2-img"
+                  class="card-img-top card2-img foryou-img"
                   src={news.image_url || logo}
                   alt="Card image cap"
+                 
                 />
                 <div class="card-body">
                   <div className="row">
@@ -78,9 +86,9 @@ const Request = (props) => {
                       </h5>
                     </div>
                     <div className="col-2">
-                      <button onClick={bookmarkfunc}>
+                    
                         <img src={bookmarkImg} alt="" />
-                      </button>
+                   
                     </div>
                   </div>
                   <div className="row">
@@ -90,9 +98,10 @@ const Request = (props) => {
                     <div className="col-2">
                       <img src={downloadImg} alt="" />
                     </div>
-                    <div className="col-2">
-                      <img src={chatImg} alt="" />
-                    </div>
+                    <Link to='/comments'>
+                <img src={chatImg} alt="" onClick={openPopUp}/>
+
+                </Link>
 
                     <div className="col-2">
                       <img src={viewImg} alt="" />

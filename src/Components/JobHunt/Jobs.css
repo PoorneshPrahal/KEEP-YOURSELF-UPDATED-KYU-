@@ -1,0 +1,28 @@
+.c1{
+    margin-top: 50px;
+    margin-left: 37px;
+}
+
+.c-t{
+
+    font-size: 12px;
+}
+
+.apply-btn{
+ display: flex;
+ justify-content: flex-end;
+ padding: 25px;
+ margin-top: 20px;
+}
+
+.c-txt{
+    max-height: 3rem; 
+  overflow: hidden;
+  text-overflow:clip;
+}
+
+.job-title{
+    max-height: 2rem;
+    overflow: hidden;
+  text-overflow:clip;
+}

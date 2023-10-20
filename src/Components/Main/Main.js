@@ -5,6 +5,7 @@ import "./Main.css";
 import Genre from "../Requesting/Genre.jsx";
 import CardSkeleton from "../News/CardSkeleton.jsx";
 import Comments from "../Comments/Comments.js";
+import ChatBot from "../ChatBot/ChatBot.js";
 import profilePic from "../../images/profilepic.svg";
 import coins from "../../images/coins.png";
 import BreakingNews from "../../images/breakingNews.gif";
@@ -137,6 +138,7 @@ const Main = () => {
         <Genre query={["Horoscope"]} handleLoading={handleLoading3} />
         <Genre query={["Sports"]} handleLoading={handleLoading4} />
       </div>
+      <ChatBot/>
     </div>
   );
 };
