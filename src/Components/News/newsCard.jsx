@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import news1 from "../../images/logo.jpg";
 import {firestore} from '../../firebase'
 import shareImg from "../../images/shareImg.png";
@@ -11,9 +11,15 @@ import { doc, setDoc } from 'firebase/firestore';
 
 function NewsCard({ article }) {
 
+  const [isOpen, setIsOpen] = useState(false);
+
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
+   
+  const openPopUp = () => {
+    setIsOpen(false);
+  }; 
 
   const bookmark = async()=>{
 
@@ -40,7 +46,7 @@ function NewsCard({ article }) {
       <div style={{ marginTop: "2%", padding: "2%" }}>
         <div class="card card-2">
           <img
-            class="card-img-top card2-img"
+            class="card-img-top card2-img foryou-img"
             src={article.image_url || news1}
             alt="Card image cap"
           />
@@ -69,7 +75,10 @@ function NewsCard({ article }) {
                 <img src={downloadImg} alt="" />
               </div>
               <div className="col-2">
-                <img src={chatImg} alt="" />
+                <Link to='/comments'>
+                <img src={chatImg} alt="" onClick={openPopUp}/>
+
+                </Link>
               </div>
 
               <div className="col-2">

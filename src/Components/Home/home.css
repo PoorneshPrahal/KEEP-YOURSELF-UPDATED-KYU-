@@ -263,7 +263,9 @@ line-height: normal;
     .card-2{
         width: 300px;
     }
-
+    .foryou-img{
+        width: 300px !important;
+    }
 }
 
 

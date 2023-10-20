@@ -16,6 +16,7 @@ import ChatBot from "./Components/ChatBot/ChatBot";
 import Bookmarks from "./Components/Bookmarks/bookmarks";
 import Jobs from "./Components/JobHunt/Jobs";
 import Horoscope from "./Components/Horoscope/Horoscope";
+import PositiveNews from "./Components/PositiveNews/PositiveNews";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/bookmarks" element={<Bookmarks />} />
 
           <Route path="/horoscope" element={<Horoscope/>} />
+          <Route path="/positivenews" element={<PositiveNews/>} />
         </Routes>
       </BrowserRouter>
     </div>

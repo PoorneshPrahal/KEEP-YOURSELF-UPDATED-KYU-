@@ -6,9 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import pft from './sample1.jpeg'
 import { FaUserCircle } from 'react-icons/fa';
 import close from '../../images/closeButton.png';
+import { Link } from "react-router-dom";
+
+
 
 
 function Comments(props) {
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const showHideClassName = props.show ? "modal display-block" : "modal display-none";
         const [name, setName] = useState('shilbha');
@@ -22,6 +27,16 @@ function Comments(props) {
             getComments()
             
         },[])
+
+        const closePopup = () => {
+          setIsOpen(false);
+        };
+
+        const openPopup = () => {
+          setIsOpen(false);
+        };
+        
+
 
         const getComments = async () => {
             try {
@@ -103,7 +118,10 @@ function Comments(props) {
         </div>
       
     </div>
-    <img src={close} alt=""  className='close-btn'/>
+     <Link to='/news'>
+     <img src={close} alt=""  className='close-btn' onClick={closePopup}/>
+
+     </Link>
     
     </div>
   )

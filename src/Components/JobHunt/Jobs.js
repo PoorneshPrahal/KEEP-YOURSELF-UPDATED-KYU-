@@ -33,7 +33,7 @@ function Jobs() {
     return(
         <div class="card c1 col-5" style={{width:"18rem"}}>
         <div class="card-body">
-          <h3 class="card-title">{e.title}</h3>
+          <h3 class="card-title job-title">{e.title}</h3>
           <h5 class="card-title c-t">{e.created}</h5>
           <p class="card-text c-txt">{e.description}</p>
           <img src={salary} alt="" height={20}/>

@@ -1,7 +1,6 @@
 .c1{
-    margin-top: 150px;
-    height: 45vh;
-    margin-left: 50px;
+    margin-top: 50px;
+    margin-left: 37px;
 }
 
 .c-t{
@@ -17,7 +16,13 @@
 }
 
 .c-txt{
-    max-height: 3rem; /* Adjust the height according to the number of lines you want to display */
+    max-height: 3rem; 
   overflow: hidden;
+  text-overflow:clip;
+}
+
+.job-title{
+    max-height: 2rem;
+    overflow: hidden;
   text-overflow:clip;
 }
