@@ -5,6 +5,7 @@ import "./Comments.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import pft from './sample1.jpeg'
 import { FaUserCircle } from 'react-icons/fa';
+import close from '../../images/closeButton.png';
 
 
 function Comments(props) {
@@ -16,9 +17,9 @@ function Comments(props) {
         const [coms,setcoms] = useState([]);
         const [l,setl] = useState(false);
 
-console.log(props.show)
+// console.log(props.show)
         useEffect(()=>{
-            // getComments()
+            getComments()
             
         },[])
 
@@ -50,14 +51,14 @@ console.log(props.show)
           getComments()
         }
   return (
-    <div>
+    <div >
      
     <div className="modal">
         <div className='modal-main container'>
           <div className='row'>
             <div className='col'>
               <div className='row'>
-                <img src={pft} width='60' height='300'/>
+                <img src={pft} width='40' height='300'/>
               </div>
              
               <div className='row'>
@@ -84,22 +85,26 @@ console.log(props.show)
               <input
               className='inpt-c'
         type="text"
-        placeholder="Comment"
+        placeholder="Add a comment"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
+        
       />
-      <button className='btn-c' onClick={addCommentToSubcollection}>Add Comment </button>
-      <button onClick={props.handleClick} className='close'>Close</button>
-              </div>
-           
+       </div>
+      
+             
+       <a className='btn-c' onClick={addCommentToSubcollection} style={{textDecoration:'none'}}>Post </a>
+
      
             </div>
-     
+
           </div>
         
         </div>
       
     </div>
+    <img src={close} alt=""  className='close-btn'/>
+    
     </div>
   )
 

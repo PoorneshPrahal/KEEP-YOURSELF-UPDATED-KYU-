@@ -9,9 +9,11 @@ import Main from "./Components/Main/Main";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
-import Summarize from "./Components/Summarize/Summarize";
+// import Summarize from "./Components/Summarize/Summarize";
 import Popup from "./Components/Popup/Popup";
-import Advertise from './Components/Advertise/Advertise'
+import Advertise from './Components/Advertise/Advertise';
+import ChatBot from "./Components/ChatBot/ChatBot";
+import Bookmarks from "./Components/Bookmarks/bookmarks";
 import Jobs from "./Components/JobHunt/Jobs";
 import Horoscope from "./Components/Horoscope/Horoscope";
 
@@ -34,14 +36,15 @@ function App() {
 
       <Route path="/comments" element={<Comments/>}/>
 
-      <Route path="/summarize" element={<Summarize/>}/>
+      {/* <Route path="/summarize" element={<Summarize/>}/> */}
       <Route path="/popup" element={<Popup/>}/>
       <Route path="/advertise" element={<Advertise/>}/>
 
-      <Route path="/jobs" element={<Jobs/>}/>
+      <Route path="/chatbot" element={<ChatBot />} />      <Route path="/jobs" element={<Jobs/>}/>
 
 
           <Route path="/specific" element={<SpecificNews />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
 
           <Route path="/horoscope" element={<Horoscope/>} />
         </Routes>
