@@ -5,6 +5,7 @@ import Sidebar from "../Sidebar/Sidebar.js";
 import Genre from "../Requesting/Genre.jsx";
 import CardSkeleton from "../News/CardSkeleton.jsx";
 import Comments from "../Comments/Comments.js";
+import ChatBot from "../ChatBot/ChatBot.js";
 const Main = () => {
   const [isloading1, setIsLoading1] = useState(true);
   const [isloading2, setIsLoading2] = useState(true);
@@ -42,6 +43,7 @@ const Main = () => {
         <Genre query={["Horoscope"]} handleLoading={handleLoading3} />
         <Genre query={["Sports"]} handleLoading={handleLoading4} />
       </div>
+      <ChatBot/>
     </div>
   );
 };

@@ -11,7 +11,8 @@ import Signup from "./Components/Signup/Signup";
 import Comments from "./Components/Comments/Comments";
 import Summarize from "./Components/Summarize/Summarize";
 import Popup from "./Components/Popup/Popup";
-import Advertise from './Components/Advertise/Advertise'
+import Advertise from './Components/Advertise/Advertise';
+import ChatBot from "./Components/ChatBot/ChatBot";
 
 function App() {
   return (
@@ -36,7 +37,7 @@ function App() {
       <Route path="/popup" element={<Popup/>}/>
       <Route path="/advertise" element={<Advertise/>}/>
 
-
+      <Route path="/chatbot" element={<ChatBot />} />
           <Route path="/specific" element={<SpecificNews />} />
         </Routes>
       </BrowserRouter>

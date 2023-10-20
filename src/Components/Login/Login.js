@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import './Login.css'
 import {auth} from '../../firebase'
-import signin from '../../images/login.jpg'
-import google from '../../images/google.jpg'
+import signin from '../../images/login.png'
+import google from '../../images/google.png'
 
 import { signInWithEmailAndPassword } from 'firebase/auth'
 

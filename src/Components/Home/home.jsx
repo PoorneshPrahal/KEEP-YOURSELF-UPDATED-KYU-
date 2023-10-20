@@ -20,6 +20,7 @@ import chooseUsImg from "../../images/chooseUsImg.png";
 import KYUImg from "../../images/KYUImg.png";
 import Navbar from "../Navbar/Navbar";
 import Popup from "../Popup/Popup";
+import ChatBot from "../ChatBot/ChatBot";
 
 export default function Home() {
   return (
@@ -124,6 +125,7 @@ export default function Home() {
                   class="card-img-top card2-img"
                   src={news1}
                   alt="Card image cap"
+                 
                 />
                 <div class="card-body">
                   <div className="row">
@@ -331,6 +333,7 @@ export default function Home() {
 
 
 <Popup/>
+<ChatBot/>
 
     </div>
   );

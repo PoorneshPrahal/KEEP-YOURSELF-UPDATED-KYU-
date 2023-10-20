@@ -1,4 +1,4 @@
-.box{
+/* .box{
     display: flex;
     flex-direction: row;
 }
@@ -16,10 +16,9 @@
 
 .modal-main{
     background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    text-align: center;
+    margin-top: 5%;
+    width: 65%;
 }
 
 .r-1{
@@ -33,16 +32,15 @@
 }
 
 .inpt-c{
-    width: 50%;
+    width: 430px;
 }
 
 .r-2{
-height: 300px !important; /* Set a fixed height for the div */
-  overflow: auto; /* Enable vertical scroll when content overflows */
-  border: 1px solid #ccc; /* Optional: Add borders for better visualization */
-  padding: 10px; /* Optional: Add padding for spacing */
+height: 300px !important; 
+  overflow: auto; 
+  border: 1px solid #ccc; 
+  padding: 10px; 
 }
-
 .lis{
     display: grid;
     
@@ -58,4 +56,79 @@ height: 300px !important; /* Set a fixed height for the div */
 .close{
     width: 100px;
     margin-left: 10px;
-}
+} */
+
+.box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+ 
+
+  }
+  
+  .modal {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    /* margin-top: 5%; */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-main {
+    background-color: #fff;
+    text-align: center;
+
+    width: 65%;
+    border-radius: 10px;
+    padding: 20px;
+
+  }
+  
+  .r-1 {
+    margin-top: 30px ;
+    
+  }
+  
+  .btn-c {
+    margin-top: -35px;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+  
+  .inpt-c {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+  
+  .r-2 {
+    max-height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .lis {
+    display: block;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+  
+  .side {
+    width: 100%;
+  }
+  
+  .close-btn{
+    margin-left: 95%;
+    cursor: pointer;
+  }
