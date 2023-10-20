@@ -5,23 +5,17 @@ import axios from 'axios';
 
 function FlippableCard({ name, color }) {
   const [isFlipped, setFlipped] = useState(false);
+
   const [horoscopeData, setHoroscopeData] = useState(null);
+    
 
+  useEffect(async() => {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://cors-anywhere.herokuapp.com/https://newastro.vercel.app/Taurus/?date=2022-04-20&lang=en');
-        setHoroscopeData(response);
-        console.log(response)
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
+    // const f = await fetch('https://newastro.vercel.app/leo/?date=2022-04-20&lang=es')
+    // console.log(f)
 
-    fetchData();
+    
   }, []);
-
   const handleCardClick = () => {
     setFlipped(!isFlipped);
   };
