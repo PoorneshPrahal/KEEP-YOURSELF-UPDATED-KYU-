@@ -5,7 +5,7 @@ import { auth } from "../../firebase";
 import signin from "../../images/login.png";
 import google from "../../images/google.png";
 import { useNavigate } from 'react-router-dom'; 
-
+import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
@@ -17,14 +17,20 @@ function Login() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, username, password).then((res) => {
-        console.log(res);
+        console.log(res.user);
         
         localStorage.setItem("userId",res.user.uid );
+        
         console.log("verfied");
-        navigate('/');
+        toast.success("User login successful");
+        setTimeout(()=>{
+          navigate('/');
+      },1000);
+        
       });
     } catch (e) {
-      alert("Please check your credentials");
+      // alert("Please check your credentials");
+      toast.error("Please check your credentials");
     }
   };
   return (

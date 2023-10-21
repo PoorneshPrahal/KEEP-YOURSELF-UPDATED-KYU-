@@ -4,10 +4,16 @@ import './Jobs.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import location from '../../images/location.png'
 import salary from '../../images/salary.png'
-
+import avatar from "../../images/avatar.jpg";
+import coins from "../../images/coins.png";
 function Jobs() {
     const [jobData, setJobData] = useState([]);
+    const name = localStorage.getItem("userName");
 
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) ) + min;
+    }
+  
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -28,7 +34,23 @@ function Jobs() {
   return (
     <div style={{ display: "flex" }}>
         <Sidebar/>
+        <div >
+      <div class="d-flex justify-content-between">
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Jobs near you</div>
+  <div class="d-flex">
+    <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
+    <img src={coins} alt="" />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
+    </div>
+    <div class="p-2 d-flex"  >
+      <img src={avatar} alt="" height={40} width={40} style={{borderRadius : "100px"}} />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{name}</p>
+    </div>
+  </div>
+</div>
+        <div className="container "></div>
         <div className='row'>
+        
 {jobData.map((e)=>{
     return(
         <div class="card c1 col-5" style={{width:"18rem"}}>
@@ -51,6 +73,7 @@ function Jobs() {
     )
 })}
     </div> 
+    </div>
 
 
     </div>

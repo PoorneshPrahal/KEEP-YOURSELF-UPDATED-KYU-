@@ -12,6 +12,8 @@ function Bookmarks() {
 
     const [articles, setArticles] = useState([]);
     const [isLoading, SetIsLoading] = useState(true);
+    const userId = localStorage.getItem("userId");
+    const name = localStorage.getItem("userName");
     useEffect(()=>{
       showBookmarks();
       
@@ -25,7 +27,7 @@ function Bookmarks() {
 
         try {
             const val = doc(firestore, "Bookmarks", "8CEou27AnNUuJ9hQfrZO");
-            const collectionval = collection(val, "user1");
+            const collectionval = collection(val, userId);
             const querySnapshot = await getDocs(collectionval);
             const bookmarksData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
             setArticles(bookmarksData);
@@ -55,7 +57,7 @@ function Bookmarks() {
     </div>
     <div class="p-2 d-flex"  >
       <img src={profilePic} alt="" />
-      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{name}</p>
     </div>
   </div>
 </div>

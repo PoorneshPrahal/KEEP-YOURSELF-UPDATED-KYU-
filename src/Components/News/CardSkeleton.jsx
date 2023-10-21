@@ -7,6 +7,9 @@ import chatImg from "../../images/chatImg.png";
 import viewImg from "../../images/viewsImg.png";
 import bookmarkImg from "../../images/bookmarkImg.png";
 function CardSkeleton({ cards }) {
+  function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
   return Array(cards)
     .fill(0)
     .map((item, i) => (
@@ -43,7 +46,7 @@ function CardSkeleton({ cards }) {
                 <div className="col-2">
                   <img src={viewImg} alt="" />
                 </div>
-                <div className="col-4 views">799 views</div>
+                <div className="col-4 views">{getRndInteger(100,1000)}</div>
               </div>
             </div>
           </div>

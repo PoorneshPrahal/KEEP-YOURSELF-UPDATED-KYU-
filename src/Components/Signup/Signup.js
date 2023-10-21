@@ -7,7 +7,7 @@ import signin from "../../images/login.png";
 import google from "../../images/google.png";
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from "react-toastify";
 function Signup() {
   const [name, setname] = useState();
   
@@ -50,10 +50,13 @@ await setDoc(docRef, {
       const userId = userCredential.user.uid;
       console.log(userId)
       await saveUserInfoTofirestore(userId, name, username, favs);
-      navigate('/login');
       console.log("Success");
+      toast.success("User Signup successful");
+      navigate('/login');
+      
     } catch (e) {
       console.log(e);
+      toast.error("Error in creating user");
     }
   };
 

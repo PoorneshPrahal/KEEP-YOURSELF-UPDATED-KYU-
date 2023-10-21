@@ -8,6 +8,7 @@ import Comments from "../Comments/Comments.js";
 import ChatBot from "../ChatBot/ChatBot.js";
 import profilePic from "../../images/profilepic.svg";
 import coins from "../../images/coins.png";
+import avatar from "../../images/avatar.jpg";
 import BreakingNews from "../../images/breakingNews.gif";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
@@ -24,6 +25,8 @@ const Main = () => {
   
   const arr = ["Technology", "Politics", "Sports"];
   const [count,setCount] = useState(0);
+  const name = localStorage.getItem("userName");
+  
   useEffect(()=>{
 
     axios
@@ -101,8 +104,8 @@ const Main = () => {
       <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
     </div>
     <div class="p-2 d-flex"  >
-      <img src={profilePic} alt="" />
-      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+      <img src={avatar} alt="" height={40} width={40} style={{borderRadius : "100px"}} />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{name}</p>
     </div>
   </div>
 </div>
@@ -135,7 +138,7 @@ const Main = () => {
         <div className="row">{isloading4 && <CardSkeleton cards={3} />}</div>
         <Genre query={arr} handleLoading={handleLoading1} />
         <Genre query={["Technology"]} handleLoading={handleLoading2} />
-        <Genre query={["Horoscope"]} handleLoading={handleLoading3} />
+        <Genre query={["Science"]} handleLoading={handleLoading3} />
         <Genre query={["Sports"]} handleLoading={handleLoading4} />
       </div>
       <ChatBot/>
