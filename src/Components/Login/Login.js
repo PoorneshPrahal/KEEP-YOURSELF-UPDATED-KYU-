@@ -4,24 +4,33 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase";
 import signin from "../../images/login.png";
 import google from "../../images/google.png";
-
+import { useNavigate } from 'react-router-dom'; 
+import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
   const [username, setusername] = useState();
   const [password, setpassword] = useState();
-  const [userId, setUserId] = useState();
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, username, password).then((res) => {
-        console.log(res);
-        setUserId(res.user.uid);
+        console.log(res.user);
+        
+        localStorage.setItem("userId",res.user.uid );
+        
         console.log("verfied");
+        toast.success("User login successful");
+        setTimeout(()=>{
+          navigate('/');
+      },1000);
+        
       });
     } catch (e) {
-      alert("Please check your credentials");
+      // alert("Please check your credentials");
+      toast.error("Please check your credentials");
     }
   };
   return (

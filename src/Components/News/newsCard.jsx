@@ -8,11 +8,11 @@ import viewImg from "../../images/viewsImg.png";
 import bookmarkImg from "../../images/bookmarkImg.png";
 import { Link } from "react-router-dom";
 import { doc, setDoc } from 'firebase/firestore';
-
+import { toast } from "react-toastify";
 function NewsCard({ article }) {
 
   const [isOpen, setIsOpen] = useState(false);
-
+  const userId = localStorage.getItem("userId");
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
@@ -27,13 +27,14 @@ function NewsCard({ article }) {
 
     try {
       const val = doc(firestore,"Bookmarks","8CEou27AnNUuJ9hQfrZO")
-      const collectionval = doc(val,"user1",article.article_id)
+      const collectionval = doc(val,userId,article.article_id)
       
       await setDoc(collectionval, article);
-
+      toast.success("Bookmark successful");
 
      } catch (error) {
        console.error('Error adding subcomment: ', error);
+       toast.error("Error in bookmarking article");
      }
   
      
@@ -64,18 +65,22 @@ function NewsCard({ article }) {
                 </h5>
               </div>
               <div className="col-2">
-                <img src={bookmarkImg} alt="" />
+                <img src={bookmarkImg} onClick={bookmark} alt="" />
               </div>
             </div>
             <div className="row">
               <div className="col-2">
-                <img src={shareImg} alt="" onClick={bookmark} />
+                <img src={shareImg} alt=""  />
               </div>
               <div className="col-2">
                 <img src={downloadImg} alt="" />
               </div>
               <div className="col-2">
-                <Link to='/comments'>
+              <Link
+                    to="/comments"
+                    state={article}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
                 <img src={chatImg} alt="" onClick={openPopUp}/>
 
                 </Link>

@@ -23,29 +23,36 @@ import KYUImg from "../../images/KYUImg.png";
 import Navbar from "../Navbar/Navbar";
 import Popup from "../Popup/Popup";
 import ChatBot from "../ChatBot/ChatBot";
-import { auth, app, firestore, collection, getDocs } from "../../firebase.js";
-
+import { firestore } from "../../firebase.js";
+import {  doc, getDoc } from 'firebase/firestore';
 export default function Home(props) {
   const [flag, setflag] = useState(0);
   const location = useLocation();
   const state = location.state;
-  console.log(state);
+  // const [userId, setUserId] = useState();
+  // useEffect(()=>{
+  //   setUserId(localStorage.getItem("userId"))
+  //   console.log(localStorage.getItem("userId"))
+  // },[])
+
+  const setlocalData = async()=>{
+
+    try {
+      const userId = localStorage.getItem("userId");
+      const docRef = doc(firestore, "UsersDatas",userId);
+const docSnap = await getDoc(docRef);
+console.log("Document data:", docSnap.data());
+const user =  docSnap.data()
+localStorage.setItem("userName",user.name);
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+      // setl(false);
+    }
+
+  }
+ 
   useEffect(() => {
-    const colRef = collection(firestore, "UsersDatas");
-    getDocs(colRef)
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          console.log(doc.data().id);
-          if (doc.data().id == state) {
-            if (doc.data().favs.length === 0) {
-              setflag(1);
-            }
-          }
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+   setlocalData();
   }, []);
   return (
     <div>
@@ -351,7 +358,9 @@ export default function Home(props) {
           <div class="line"></div>
         </div>
       </div>
-      {flag && <Popup />}<ChatBot/>
+      
+      <Popup />
+      <ChatBot/>
 
     </div>
   );

@@ -18,6 +18,9 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
+    padding-top: 10%;
+    
+   
   }
   
   .modal-main {
@@ -73,5 +76,6 @@
   .close-btn{
     margin-left: 95%;
     cursor: pointer;
+    margin-top: 3%;
     z-index: 1;
   }

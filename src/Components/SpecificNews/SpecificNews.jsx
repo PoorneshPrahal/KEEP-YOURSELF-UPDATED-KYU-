@@ -11,12 +11,13 @@ import share from "../../images/share.jpg";
 import readaloud from "../../images/readaloud.png";
 import Send from "../../images/Send.jpg";
 import { useSpeechSynthesis } from 'react-speech-kit';
-import profilePic from "../../images/profilepic.svg";
+import avatar from "../../images/avatar.jpg";
 import coins from "../../images/coins.png";
 import ChatBot from "../ChatBot/ChatBot.js";
-
+import { Link } from "react-router-dom";
 const SpecificNews = (props) => {
   const location = useLocation();
+  const name = localStorage.getItem("userName");
   const { speak, cancel } = useSpeechSynthesis();
   const [toggle, setToggle] = useState(true)
   const state = location.state;
@@ -63,15 +64,15 @@ const SpecificNews = (props) => {
         }}
       >
         <div class="d-flex justify-content-between">
-  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>News</div>
   <div class="d-flex">
     <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
     <img src={coins} alt="" />
       <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
     </div>
     <div class="p-2 d-flex"  >
-      <img src={profilePic} alt="" />
-      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+      <img src={avatar} alt="" height={40} width={40} style={{borderRadius : "100px"}}/>
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{name}</p>
     </div>
   </div>
 </div>
@@ -86,21 +87,27 @@ const SpecificNews = (props) => {
             <Button
               variant="light"
               style={{
-                border: "solid 2px black",
-                width: "15%",
+                border: "solid 1px grey",
+                width: "17%",
                 marginLeft: "1%",
                 marginRight: "1%",
               }}
-              onClick={summarize}
-            >
+             
+            ><Link
+            to="/comments"
+            state={state}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+
               <img src={summarizer} style={{ width: "23%" }} alt="" srcset="" />
-              <span> Summarize</span>
+              <span> Comment</span>
+              </Link>
             </Button>
             <Button
               variant="light"
               style={{
-                border: "solid 2px black",
-                width: "15%",
+                border: "solid 1px grey",
+                width: "17%",
                 marginLeft: "1%",
                 marginRight: "1%",
               }}
@@ -129,7 +136,7 @@ const SpecificNews = (props) => {
             })}
           </h5>
           <h1 style={{ marginBottom: "2%", marginTop: "1%" }}>{state.title}</h1>
-          <p style={{ fontSize: "1.5em" }}>{state.description}</p>
+          <p style={{ fontSize: "1.5em",textAlign : "justify" }}>{state.description}</p>
           <img
             src={state.image_url || logo}
             style={{
@@ -140,7 +147,7 @@ const SpecificNews = (props) => {
               marginBottom: "3%",
             }}
           />
-          <p style={{ fontSize: "1.3em" }}>{state.content}</p>
+          <p style={{ fontSize: "1.3em",textAlign : "justify" }} className="specific-para">{state.content}</p>
         </div>
       </div>
       <div

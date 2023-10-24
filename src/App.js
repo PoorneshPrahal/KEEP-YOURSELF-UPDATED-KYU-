@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./Components/Home/home";
 import News from "./Components/News/news";
 import SpecificNews from "./Components/SpecificNews/SpecificNews.jsx";
-
+import {ToastContainer, toast} from 'react-toastify';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Main from "./Components/Main/Main";
@@ -17,11 +17,13 @@ import Bookmarks from "./Components/Bookmarks/bookmarks";
 import Jobs from "./Components/JobHunt/Jobs";
 import Horoscope from "./Components/Horoscope/Horoscope";
 import PositiveNews from "./Components/PositiveNews/PositiveNews";
-
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <div className="App">
+      
       <BrowserRouter>
+      <ToastContainer position='top-center' />
         <Routes>
           <Route path="/" element={<Home />} />
 

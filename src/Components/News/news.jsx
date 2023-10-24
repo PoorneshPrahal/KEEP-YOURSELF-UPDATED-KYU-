@@ -6,21 +6,25 @@ import Sidebar from "../Sidebar/Sidebar";
 import axios from "axios";
 import NewsCard from "./newsCard";
 import CardSkeleton from "./CardSkeleton";
-import { useLocation } from "react-router-dom";
-import profilePic from "../../images/profilepic.svg";
+import { useLocation, useNavigate  } from "react-router-dom";
+import avatar from "../../images/avatar.jpg";
 import coins from "../../images/coins.png";
 
 function News(props) {
   const [articles, setArticles] = useState([]);
   const [nextPage, setNextPage] = useState(null);
   const [isLoading, SetIsLoading] = useState(true);
+  const history = useNavigate();
   const location = useLocation();
   const state = location.state;
   console.log(state);
+  const name = localStorage.getItem("userName");
+  console.log(name)
 
   useEffect(() => {
+    console.log('Location State:', state);
     fetchInitial();
-  }, []);
+  }, [state]);
 
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -28,9 +32,10 @@ function News(props) {
 
   const lazyLoad = async () => {
     if (state.length === 1) {
+      
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]}&language=en&page=${nextPage}`
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&category=${state[0]}&language=en&page=${nextPage}`
         )
         .then((res) => {
           const newArticles = res.data.results;
@@ -61,10 +66,11 @@ function News(props) {
   };
 
   const fetchInitial = async () => {
+    console.log("API HAS BEEN HIT")
     if (state.length === 1) {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]}&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&category=${state[0]}&language=en`
         )
         .then((res) => {
           console.log(res.data.results);
@@ -118,15 +124,15 @@ function News(props) {
        
       <div >
       <div class="d-flex justify-content-between">
-  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>News</div>
   <div class="d-flex">
     <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
     <img src={coins} alt="" />
       <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
     </div>
     <div class="p-2 d-flex"  >
-      <img src={profilePic} alt="" />
-      <p style={{marginTop : "auto",marginBottom : "auto"}} >Katrina Petrova</p>
+      <img src={avatar} alt="" height={40} width={40} style={{borderRadius : "100px"}} />
+      <p style={{marginTop : "auto",marginBottom : "auto"}} >{name}</p>
     </div>
   </div>
 </div>

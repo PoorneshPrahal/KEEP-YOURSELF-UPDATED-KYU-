@@ -1,21 +1,41 @@
-import React, { useState } from 'react'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
-import '../Login/Login.css'
-import {auth,firestore} from '../../firebase'
-import { collection,addDoc } from 'firebase/firestore';
-import signin from '../../images/login.png'
-import google from '../../images/google.png'
-
-
+import React, { useEffect, useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import "../Login/Login.css";
+import { auth, firestore } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import signin from "../../images/login.png";
+import google from "../../images/google.png";
+import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 function Signup() {
   const [name, setname] = useState();
+  
   const [username, setusername] = useState();
   const [password, setpassword] = useState();
   const favs = [];
+  const navigate = useNavigate();
   const userRef = collection(firestore, "UsersDatas");
 
-  const saveUserInfoTofirestore = async (id, name, email, favs) => {
-    await addDoc(userRef, { id: id, name: name, username: email, favs: favs });
+
+
+  const saveUserInfoTofirestore = async (userId) => {
+    
+    
+    console.log("Save user info")
+    const collectionRef = collection(firestore, "UsersDatas"); // Reference to the collection
+
+ // Replace this with your actual user ID or a variable
+const docRef = doc(collectionRef, userId); // Reference to the document inside the collection
+
+await setDoc(docRef, {
+  id: userId,
+  name: name,
+  username: username,
+  favs: favs
+});
+
+
   };
 
   const signup = async (e) => {
@@ -28,11 +48,15 @@ function Signup() {
         password
       );
       const userId = userCredential.user.uid;
-
+      console.log(userId)
       await saveUserInfoTofirestore(userId, name, username, favs);
       console.log("Success");
+      toast.success("User Signup successful");
+      navigate('/login');
+      
     } catch (e) {
       console.log(e);
+      toast.error("Error in creating user");
     }
   };
 

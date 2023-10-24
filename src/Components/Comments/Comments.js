@@ -3,20 +3,26 @@ import {firestore} from '../../firebase'
 import { addDoc, collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import "./Comments.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import pft from './sample1.jpeg'
+// import pft from './sample1.jpeg'
 import { FaUserCircle } from 'react-icons/fa';
 import close from '../../images/closeButton.png';
 import { Link } from "react-router-dom";
+import pft from "../../images/logo.jpg";
+import { useLocation } from "react-router-dom";
 
 
-
-
-function Comments(props) {
+const Comments = (props)=> {
 
   const [isOpen, setIsOpen] = useState(false);
-
+  const location = useLocation();
+  const article = location.state;
+  const id = article.article_id
+  // const countries = state.country;
+  // const categories = state.category;
+  console.log(article.article_id)
   const showHideClassName = props.show ? "modal display-block" : "modal display-none";
-        const [name, setName] = useState('shilbha');
+        // const [name, setName] = useState('shilbha');
+       
         const [comment, setComment] = useState('');
         const [subcollectionName, setSubcollectionName] = useState('');
         const [coms,setcoms] = useState([]);
@@ -41,7 +47,7 @@ function Comments(props) {
         const getComments = async () => {
             try {
               const val = doc(firestore, "Comments", "VssfnEMhepJFOcPb2ENn");
-              const collectionval = collection(val, "news1");
+              const collectionval = collection(val,id);
               const querySnapshot = await getDocs(collectionval);
               const commentsData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
               setcoms(commentsData);
@@ -55,8 +61,10 @@ function Comments(props) {
       
         const addCommentToSubcollection = async () => {
           try {
+            const name = localStorage.getItem("userName");
+            console.log(name)
            const val = doc(firestore,"Comments","VssfnEMhepJFOcPb2ENn")
-           const collectionval = collection(val,"news1")
+           const collectionval = collection(val,id)
           await  addDoc(collectionval,{name:name,comment:comment})
             console.log('Subcomment added successfully!');
           } catch (error) {
@@ -69,15 +77,21 @@ function Comments(props) {
     <div >
      
     <div className="modal">
+      
+    <Link to='/main'>
+     <img src={close}  alt=""  className='close-btn' onClick={closePopup}/>
+
+     </Link>
+    
         <div className='modal-main container'>
           <div className='row'>
             <div className='col'>
               <div className='row'>
-                <img src={pft} width='40' height='300'/>
+                <img src={article.image_url||pft} width='40' height='300'/>
               </div>
              
               <div className='row'>
-                <h5>Israel military releases satellite images showing Hamas' war crimes</h5>
+                <h5>{article.title}</h5>
               </div>
             </div>
             <div className='col side'>
@@ -118,10 +132,6 @@ function Comments(props) {
         </div>
       
     </div>
-     <Link to='/news'>
-     <img src={close} alt=""  className='close-btn' onClick={closePopup}/>
-
-     </Link>
     
     </div>
   )

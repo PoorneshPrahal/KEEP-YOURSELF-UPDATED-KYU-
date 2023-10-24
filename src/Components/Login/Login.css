@@ -92,6 +92,17 @@
     background: linear-gradient(180deg, rgba(195, 55, 100, 0.7), rgba(29, 38, 113, 0.7));
 
   }
+
+
+  @media(min-width : 1400px){
+
+    .login-container{
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 120px;
+    }
+
+  }
   
  
   
