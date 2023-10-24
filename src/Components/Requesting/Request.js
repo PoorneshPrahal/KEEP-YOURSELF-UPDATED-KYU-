@@ -14,9 +14,12 @@ import { doc, setDoc } from 'firebase/firestore';
 import { toast } from "react-toastify";
 
 const Request = (props) => {
+  // // State variables to save articles data
   const [tech, setTech] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("userId");
+  
+  // Function to bookmark data
   const bookmark = async(article)=>{
 
     console.log("Button clicked")
@@ -31,6 +34,7 @@ const Request = (props) => {
 
 
      } catch (error) {
+      // Display error message
        console.error('Error adding subcomment: ', error);
        console.log("Success");
       toast.error("Error in bookmarking article");
@@ -50,11 +54,12 @@ const Request = (props) => {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
+  // UseEffect to fetch data from API
   useEffect(() => {
     if (props.query.length === 1) {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&category=${props.query[0]}&size=3&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&category=${props.query[0]}&size=3&language=en`
         )
         .then((res) => {
           setTech(res.data.results);
@@ -67,7 +72,7 @@ const Request = (props) => {
     } else {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&q=${props.query[0]},${props.query[1]},${props.query[2]}&size=3&language=en`
         )
         .then((res) => {
           setTech(res.data.results);
@@ -88,6 +93,7 @@ const Request = (props) => {
         margin: "auto",
       }}
     >
+      {/* Map data from state variable to display card elements */}
       {tech.map((news, key) => {
         return (
           <div className="col" style={{ display: "inline-block", padding:'10px'}}>

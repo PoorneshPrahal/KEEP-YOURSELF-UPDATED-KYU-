@@ -12,9 +12,13 @@ const interests = [
 ];
 
 const Popup = () => {
+
+  // UseState to save interest of users 
   const [selectedInterests, setSelectedInterests] = useState([]);
+  // UseState to handle opening and closing of popup
   const [isOpen, setIsOpen] = useState(false);
 
+  // Function to toogle selected options on click
   const toggleInterest = (interest) => {
     if (selectedInterests.includes(interest)) {
       setSelectedInterests(
@@ -27,10 +31,12 @@ const Popup = () => {
     }
   };
 
+  // Function to close popup
   const closePopup = () => {
     setIsOpen(false);
   };
 
+  // UseEffect to handle opening and closing of popup
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsOpen(true);

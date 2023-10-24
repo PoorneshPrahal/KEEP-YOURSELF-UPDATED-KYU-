@@ -4,7 +4,7 @@ import logo from "../../images/logo.jpg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 function Navbar() {
-  
+  // Navbar contents to be displayed
   return (
     <>
       <Nav className="navbar" activeKey="/home">

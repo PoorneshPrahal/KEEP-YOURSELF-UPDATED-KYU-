@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { doc, setDoc } from 'firebase/firestore';
 import { toast } from "react-toastify";
 function NewsCard({ article }) {
-
+  // NewsCard component to display a news article
   const [isOpen, setIsOpen] = useState(false);
   const userId = localStorage.getItem("userId");
   function getRndInteger(min, max) {
@@ -21,6 +21,7 @@ function NewsCard({ article }) {
     setIsOpen(false);
   }; 
 
+  // Function to bookmark a news article on click
   const bookmark = async()=>{
 
     console.log("Button clicked")
@@ -76,6 +77,7 @@ function NewsCard({ article }) {
                 <img src={downloadImg} alt="" />
               </div>
               <div className="col-2">
+                {/* Open chat forum on click */}
               <Link
                     to="/comments"
                     state={article}

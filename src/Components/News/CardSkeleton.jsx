@@ -10,6 +10,7 @@ function CardSkeleton({ cards }) {
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
+  // Card skeleton component to display when content is loading
   return Array(cards)
     .fill(0)
     .map((item, i) => (

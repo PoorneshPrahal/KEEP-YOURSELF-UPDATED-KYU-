@@ -31,18 +31,7 @@ const PositiveNews = () => {
   }, []); // Empty dependency array ensures the effect runs once after the initial render
 
   return (
-    // <div>
-    //   <div>
-    //     <h2>Positive News</h2>
-    //     <ul>
-    //       {positiveNews.map((article, index) => (
-    //         <li key={index}>
-    //           <strong>{article.title}</strong> - {article.description}
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   </div>
-    // </div>
+
     <div style={{ display: "flex" }}>
       <Sidebar />
       <div className="row" style={{ margin: "auto" }}>

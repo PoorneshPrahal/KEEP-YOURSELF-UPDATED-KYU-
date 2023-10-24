@@ -11,6 +11,7 @@ import avatar from "../../images/avatar.jpg";
 import coins from "../../images/coins.png";
 
 function News(props) {
+  // State variables to save articles data using useLocation hook
   const [articles, setArticles] = useState([]);
   const [nextPage, setNextPage] = useState(null);
   const [isLoading, SetIsLoading] = useState(true);
@@ -21,6 +22,7 @@ function News(props) {
   const name = localStorage.getItem("userName");
   console.log(name)
 
+  // UseEffect to fetch articles data from API 
   useEffect(() => {
     console.log('Location State:', state);
     fetchInitial();
@@ -30,12 +32,13 @@ function News(props) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
+  // LazyLoading function to load the data once the user scrolls down
   const lazyLoad = async () => {
     if (state.length === 1) {
       
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&category=${state[0]}&language=en&page=${nextPage}`
+          `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&category=${state[0]}&language=en&page=${nextPage}`
         )
         .then((res) => {
           const newArticles = res.data.results;
@@ -50,7 +53,7 @@ function News(props) {
     } else {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]},${state[1]},${state[2]}&language=en&page=${nextPage}`
+          `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&q=${state[0]},${state[1]},${state[2]}&language=en&page=${nextPage}`
         )
         .then((res) => {
           console.log(res.data.results);
@@ -65,12 +68,13 @@ function News(props) {
     }
   };
 
+  // Function to Load the data intially from API
   const fetchInitial = async () => {
     console.log("API HAS BEEN HIT")
     if (state.length === 1) {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&category=${state[0]}&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&category=${state[0]}&language=en`
         )
         .then((res) => {
           console.log(res.data.results);
@@ -85,7 +89,7 @@ function News(props) {
     } else {
       axios
         .get(
-          `https://newsdata.io/api/1/news?apikey=pub_31170b992fcdf54dd4092860129f92ca3e1af&q=${state[0]},${state[1]},${state[2]}&language=en`
+          `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&q=${state[0]},${state[1]},${state[2]}&language=en`
         )
         .then((res) => {
           console.log(res.data.results);
@@ -100,12 +104,9 @@ function News(props) {
     }
   }; 
 
+  // Logic for LazyLoading function call
   window.onscroll = () => {
-    // console.log("Scrolled");
-    // console.log("Window Height:", window.innerHeight);
-    // console.log("Scroll Top:", document.documentElement.scrollTop);
-    // console.log("Document Height:", document.documentElement.offsetHeight);
-    // console.log(window.innerHeight + document.documentElement.scrollTop);
+    
     if (
       window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight - 2
@@ -138,12 +139,12 @@ function News(props) {
 </div>
         <div className="container ">
          
-
+          {/* Display articles using map function */}
           <div className="row">
             {articles.map((article, index) => {
               return <NewsCard article={article} key={article.id} />;
             })}
-
+            {/* Card skeleton to be displayed when content is loading */}
             {isLoading && <CardSkeleton cards={6} />}
           </div>
         </div>

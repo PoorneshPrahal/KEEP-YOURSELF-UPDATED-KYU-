@@ -16,6 +16,7 @@ import coins from "../../images/coins.png";
 import ChatBot from "../ChatBot/ChatBot.js";
 import { Link } from "react-router-dom";
 const SpecificNews = (props) => {
+  // Use location hook to obtain article data
   const location = useLocation();
   const name = localStorage.getItem("userName");
   const { speak, cancel } = useSpeechSynthesis();
@@ -30,6 +31,7 @@ const SpecificNews = (props) => {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
+  // Function to read aloud the news article on click
   const readAloudFunction = ()=>{
     
     if(toggle){
@@ -49,13 +51,10 @@ const SpecificNews = (props) => {
     return _string.replace(/(^\w{1})|(\s{1}\w{1})/g, capitalizeLetterFunc);
   }
 
-  const summarize = ()=>{
-    cancel();
-  }
-
-
+ 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
+      {/* Sidebar Component */}
       <Sidebar />
       <div
         style={{
@@ -163,6 +162,7 @@ const SpecificNews = (props) => {
           borderRadius: "5%",
         }}
       >
+        {/* Component to write down your thoughts about news articles */}
         <span>Pen down your thoughts...</span>
         <InputGroup className="mb-3">
           <Form.Control

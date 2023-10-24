@@ -7,13 +7,16 @@ import salary from '../../images/salary.png'
 import avatar from "../../images/avatar.jpg";
 import coins from "../../images/coins.png";
 function Jobs() {
+
+  // State variables to save job data
     const [jobData, setJobData] = useState([]);
     const name = localStorage.getItem("userName");
 
     function getRndInteger(min, max) {
       return Math.floor(Math.random() * (max - min + 1) ) + min;
     }
-  
+    
+    // UseEffect to fetch job related data from API
     useEffect(() => {
         const fetchData = async () => {
             try {

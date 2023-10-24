@@ -9,6 +9,8 @@ import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 function Signup() {
+
+  // State variables to save user data
   const [name, setname] = useState();
   
   const [username, setusername] = useState();
@@ -18,14 +20,14 @@ function Signup() {
   const userRef = collection(firestore, "UsersDatas");
 
 
-
+  // Function to save user data to firestore
   const saveUserInfoTofirestore = async (userId) => {
     
     
     console.log("Save user info")
     const collectionRef = collection(firestore, "UsersDatas"); // Reference to the collection
 
- // Replace this with your actual user ID or a variable
+
 const docRef = doc(collectionRef, userId); // Reference to the document inside the collection
 
 await setDoc(docRef, {
@@ -38,9 +40,10 @@ await setDoc(docRef, {
 
   };
 
+  // Signup Function to be called on button click
   const signup = async (e) => {
     e.preventDefault();
-
+    // Creating user with firebase Authentication
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -49,12 +52,14 @@ await setDoc(docRef, {
       );
       const userId = userCredential.user.uid;
       console.log(userId)
+      // Save user data to firestore database
       await saveUserInfoTofirestore(userId, name, username, favs);
       console.log("Success");
       toast.success("User Signup successful");
       navigate('/login');
       
     } catch (e) {
+      // Display error message
       console.log(e);
       toast.error("Error in creating user");
     }

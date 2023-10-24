@@ -13,6 +13,8 @@ import BreakingNews from "../../images/breakingNews.gif";
 import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 const Main = () => {
+
+  // State variables to handle cardSkeleton while data is loading
   const [isloading1, setIsLoading1] = useState(true);
   const [isloading2, setIsLoading2] = useState(true);
   const [isloading3, setIsLoading3] = useState(true);
@@ -20,6 +22,7 @@ const Main = () => {
   const [isloading5, setIsLoading5] = useState(false);
   const [isloading6, setIsLoading6] = useState(true);
   
+  // // State variables to save Breaking news data
   const [breakNews, setBreakNews] = useState([]);
   const [article,setArticle] = useState({});
   
@@ -27,49 +30,38 @@ const Main = () => {
   const [count,setCount] = useState(0);
   const name = localStorage.getItem("userName");
   
+
+  // UseEffect to fetch Breaking News data
   useEffect(()=>{
 
     axios
     .get(
-      `https://newsdata.io/api/1/news?apikey=pub_13638e5d227e5c4d3b68974d6e3b7841a6174&size=3&language=en`
+      `https://newsdata.io/api/1/news?apikey=pub_13656bb97e2c535e8bcc4b82692c762c305c9&size=3&language=en`
     )
     .then((res) => {
       const newArticles = res.data.results;
       console.log(newArticles)
+
+      // Save articles in BreakNews state variable
       setBreakNews(newArticles)
-      // setArticle(newArticles[0].title)
+     
       setIsLoading5(true)
       setIsLoading6(false)
     })
     .catch((err) => {
+      // Display error in console
       console.log(err);
     });
 
 
   },[]);
-  // if(breakNews){
-  //   setInterval(async () => {
-  //     let i = count;
-  //     if (i < breakNews.length) {
-  //       const currentArticle =await  breakNews[i].title;
-  //       // Implement typewriter and fade-in logic here, similar to the previous examples
-  //       // You can use the typewriter and fade-in logic from the previous examples
-  //       // Update the displayed article title using useState and useEffect
-  //       // ...
-  //      await console.log(currentArticle, i);
-  //       await setCount(i + 1);
-  //     } else {
-  //       // Reset the count to 0 if it exceeds the length of breakNews array
-  //       setCount(0);
-  //     }
-  //   }, 10000);
 
-  // }
-  
   
   function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
+
+  // Functions to handle loading of data
   const handleLoading1 = () => {
     setIsLoading1(false);
   };
@@ -122,6 +114,8 @@ const Main = () => {
                   >
                       <p className="BreakNewsPara">{isloading5 && breakNews[0].title}</p>
                   </Link>   
+
+        {/* Loading skeleton to be displayed while Breaking News content is loading */}
         {isloading6 && <Skeleton count={2} />}
 
 </div>
@@ -131,11 +125,13 @@ const Main = () => {
 
 
 
-
+        {/* Displaying skeleton while data is loading */}
         <div className="row">{isloading1 && <CardSkeleton cards={3} />}</div>
         <div className="row">{isloading2 && <CardSkeleton cards={3} />}</div>
         <div className="row">{isloading3 && <CardSkeleton cards={3} />}</div>
         <div className="row">{isloading4 && <CardSkeleton cards={3} />}</div>
+
+        {/* Displaying the articles obtained from API */}
         <Genre query={arr} handleLoading={handleLoading1} />
         <Genre query={["Technology"]} handleLoading={handleLoading2} />
         <Genre query={["Science"]} handleLoading={handleLoading3} />

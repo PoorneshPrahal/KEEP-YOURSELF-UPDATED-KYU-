@@ -26,15 +26,14 @@ import ChatBot from "../ChatBot/ChatBot";
 import { firestore } from "../../firebase.js";
 import {  doc, getDoc } from 'firebase/firestore';
 export default function Home(props) {
+
+  // State variables to display recommendations popup
   const [flag, setflag] = useState(0);
   const location = useLocation();
   const state = location.state;
-  // const [userId, setUserId] = useState();
-  // useEffect(()=>{
-  //   setUserId(localStorage.getItem("userId"))
-  //   console.log(localStorage.getItem("userId"))
-  // },[])
+ 
 
+  // Function to set the user details
   const setlocalData = async()=>{
 
     try {
@@ -50,7 +49,8 @@ localStorage.setItem("userName",user.name);
     }
 
   }
- 
+  
+  // UseEffect to obtain user data on first render
   useEffect(() => {
    setlocalData();
   }, []);
@@ -358,8 +358,10 @@ localStorage.setItem("userName",user.name);
           <div class="line"></div>
         </div>
       </div>
-      
+      {/* Popup Component */}
       <Popup />
+
+      {/* ChatBot Component */}
       <ChatBot/>
 
     </div>

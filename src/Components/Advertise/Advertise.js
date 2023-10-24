@@ -7,9 +7,11 @@ import ChatBot from '../ChatBot/ChatBot';
 
 function Advertise() {
 
+   // State variables for form submission handling
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showThankYou, setShowThankYou] = useState(false);
 
+      // Function to handle form submission
     const handleSubmit = () => {
         setIsSubmitting(true);
       
@@ -51,7 +53,8 @@ function Advertise() {
     )}
 
     </div>
-    
+
+    {/* Footer Content */}
     <div className="footer">
         <div className="container">
         <div className="row">
@@ -102,6 +105,7 @@ function Advertise() {
       </div>
 
       </div>
+      {/* Chatbot for interaction */}
 <ChatBot/>
     </div>
   )

@@ -3,7 +3,7 @@ import {firestore} from '../../firebase'
 import { addDoc, collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import "./Comments.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import pft from './sample1.jpeg'
+
 import { FaUserCircle } from 'react-icons/fa';
 import close from '../../images/closeButton.png';
 import { Link } from "react-router-dom";
@@ -14,26 +14,28 @@ import { useLocation } from "react-router-dom";
 const Comments = (props)=> {
 
   const [isOpen, setIsOpen] = useState(false);
+
+  // Obtain article id using UseLocation hooks
   const location = useLocation();
   const article = location.state;
   const id = article.article_id
-  // const countries = state.country;
-  // const categories = state.category;
+  
   console.log(article.article_id)
   const showHideClassName = props.show ? "modal display-block" : "modal display-none";
-        // const [name, setName] = useState('shilbha');
        
+      //  State variables for storing comments from database 
         const [comment, setComment] = useState('');
         const [subcollectionName, setSubcollectionName] = useState('');
         const [coms,setcoms] = useState([]);
         const [l,setl] = useState(false);
 
-// console.log(props.show)
+        // UseEffect to obtian previous comments
         useEffect(()=>{
             getComments()
             
         },[])
-
+        
+        // Functions to handle opening and closing of popup
         const closePopup = () => {
           setIsOpen(false);
         };
@@ -43,7 +45,7 @@ const Comments = (props)=> {
         };
         
 
-
+        // Function to get comments for a particular article from firebase
         const getComments = async () => {
             try {
               const val = doc(firestore, "Comments", "VssfnEMhepJFOcPb2ENn");
@@ -58,7 +60,8 @@ const Comments = (props)=> {
               setl(false);
             }
           };
-      
+        
+        // Function Add new comments to the article 
         const addCommentToSubcollection = async () => {
           try {
             const name = localStorage.getItem("userName");
@@ -111,6 +114,7 @@ const Comments = (props)=> {
       )}   
               </div>
               <div className='row r-1'>
+                {/* Input tag to obtain the comment to be inserted to the article */}
               <input
               className='inpt-c'
         type="text"
@@ -121,7 +125,7 @@ const Comments = (props)=> {
       />
        </div>
       
-             
+             {/* Button to add new Comments to the article */}
        <a className='btn-c' onClick={addCommentToSubcollection} style={{textDecoration:'none'}}>Post </a>
 
      

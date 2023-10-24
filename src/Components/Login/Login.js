@@ -9,10 +9,12 @@ import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 function Login() {
+  // State variables to save user data
   const [username, setusername] = useState();
   const [password, setpassword] = useState();
   const navigate = useNavigate();
 
+  // Function to login a user
   const login = async (e) => {
     e.preventDefault();
     try {
@@ -29,7 +31,7 @@ function Login() {
         
       });
     } catch (e) {
-      // alert("Please check your credentials");
+      // Display error message
       toast.error("Please check your credentials");
     }
   };
@@ -53,7 +55,7 @@ function Login() {
 
           <p style={{ color: "#777777" }}>Step Inside the Headlines.</p>
           <label>Email</label>
-
+          {/* Input field for userName */}
           <input
             type="text"
             placeholder="Email for magic codes"
@@ -62,6 +64,7 @@ function Login() {
               setusername(e.target.value);
             }}
           />
+            {/* Input field for Password */}
           <label>Password</label>
           <input
             type="password"
@@ -71,6 +74,8 @@ function Login() {
               setpassword(e.target.value);
             }}
           />
+
+          {/* Invoke login function onClick */}
           <button
             className="btn-log"
             onClick={(e) => {
@@ -80,9 +85,7 @@ function Login() {
             Get Started
           </button>
           <p className="login-text">or continue with</p>
-          {/* <Link to="/" state={userId}>
-            <button className="btn-log btn-google">Home</button>
-          </Link> */}
+          
           <button className="btn-log btn-google">
             {" "}
             <img src={google} height={33} />

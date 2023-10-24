@@ -21,6 +21,7 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  // Sidebar component 
   return (
     <div style={{ display: "inline-block" }}>
       <CDBSidebar textColor="#000" backgroundColor="#fff">
@@ -102,6 +103,18 @@ const Sidebar = () => {
                 style={{ textDecoration: "none", color: "black" }}
               >
                 <CDBSidebarMenuItem > <img src={environment} alt="" height={30} width={30}/>Environment</CDBSidebarMenuItem>
+              </Link>
+            </NavLink>
+            <NavLink exact to="/tables" activeClassName="activeClicked">
+              <Link
+                to="/bookmarks"
+                state={["Entertainment"]}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <CDBSidebarMenuItem >
+                  <img src={entertainment} alt="" height={30} width={30} />
+                  Bookmarks
+                </CDBSidebarMenuItem>
               </Link>
             </NavLink>
             <NavLink exact to="" activeClassName="activeClicked">
