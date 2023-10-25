@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar/Sidebar.js";
 import { useLocation } from "react-router-dom";
 import logo from "../../images/logo.jpg";
 import summarizer from "../../images/summarizer.jpg";
-import share from "../../images/share.jpg";
+import mute from "../../images/muteImg1.png";
 import readaloud from "../../images/readaloud.png";
 import Send from "../../images/Send.jpg";
 import { useSpeechSynthesis } from 'react-speech-kit';
@@ -112,7 +112,7 @@ const SpecificNews = (props) => {
               }}
               onClick={readAloudFunction}
             >
-              <img src={toggle ? readaloud : share} style={{ width: "23%" }} alt="" srcset="" />
+              <img src={toggle ? readaloud : mute} style={{ width: "23%" }} alt="" srcset="" />
               <span> Read-Aloud</span>
             </Button>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Horoscope.css'; 
 import Sidebar from '../Sidebar/Sidebar.js';
-import profilePic from "../../images/profilepic.svg";
+import profilePic from "../../images/avatar.jpg";
 import coins from "../../images/coins.png";
 import aries from '../../images/aries.jpg';
 import taurus from '../../images/taurus.jpg';
@@ -107,6 +107,7 @@ const zodiacSigns = [
 ];
 
 const FlippableCard = ({ zodiac }) => {
+
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -134,6 +135,7 @@ const FlippableCard = ({ zodiac }) => {
 };
 
 const ThreeRowsOfFour = () => {
+  const UserName = localStorage.getItem("userName");
   return (
     <div className="horo-sidebar">
       <Sidebar />
@@ -148,8 +150,8 @@ const ThreeRowsOfFour = () => {
               </p>
             </div>
             <div class="p-2 d-flex">
-              <img src={profilePic} alt="" />
-              <p style={{ marginTop: '10px' }}>Katrina Petrova</p>
+            <img src={profilePic} alt="" height={40} width={40} style={{borderRadius : "100px"}} />
+              <p style={{ marginTop: '10px' }}>{UserName}</p>
             </div>
           </div>
         </div>

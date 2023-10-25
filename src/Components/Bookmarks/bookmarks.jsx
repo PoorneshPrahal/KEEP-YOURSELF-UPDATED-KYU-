@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {firestore} from '../../firebase'
 import { addDoc, collection, doc, getDoc, getDocs } from 'firebase/firestore';
-import profilePic from "../../images/profilepic.svg";
+import profilePic from "../../images/avatar.jpg";
 import coins from "../../images/coins.png";
 import Sidebar from '../Sidebar/Sidebar';
 import NewsCard from '../News/newsCard';
@@ -59,14 +59,14 @@ function Bookmarks() {
        
       <div >
       <div class="d-flex justify-content-between">
-  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Technology News</div>
+  <div class="p-2 navbarTitle" style={{marginTop : "auto",marginBottom : "auto", marginLeft : "2%"}}>Bookmarks</div>
   <div class="d-flex">
     <div class="p-2 d-flex" style={{marginTop : "auto",marginBottom : "auto"}}>
     <img src={coins} alt="" />
       <p style={{marginTop : "auto",marginBottom : "auto"}} >{getRndInteger(100,1000)}</p>
     </div>
     <div class="p-2 d-flex"  >
-      <img src={profilePic} alt="" />
+    <img src={profilePic} alt="" height={40} width={40} style={{borderRadius : "100px"}} />
       <p style={{marginTop : "auto",marginBottom : "auto"}} >{name}</p>
     </div>
   </div>

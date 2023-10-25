@@ -96,6 +96,18 @@ const Sidebar = () => {
                 </CDBSidebarMenuItem>
               </Link>
             </NavLink>
+            <NavLink exact to="/tables" activeClassName="activeClicked">
+              <Link
+                to="/horoscope"
+                state={["Entertainment"]}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <CDBSidebarMenuItem >
+                  <img src={entertainment} alt="" height={30} width={30} />
+                  Horoscope
+                </CDBSidebarMenuItem>
+              </Link>
+            </NavLink>
             <NavLink exact to="" activeClassName="activeClicked">
               <Link
                 to="/news"
